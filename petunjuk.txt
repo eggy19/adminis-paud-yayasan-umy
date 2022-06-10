@@ -1,0 +1,2 @@
+CRUD ke mysql
+tampil view lewat ajax
