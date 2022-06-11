@@ -43,7 +43,6 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>No</th>
                                             <th>Nomor Induk</th>
                                             <th>Nama Siswa</th>
                                             <th>Gender</th>
@@ -76,8 +75,8 @@
                                             <td>X</td>
                                             <td>X</td>
                                             <td>
-                                                <button class="hapus btn btn-danger">Hapus</button>
-                                                <button class="ubah btn btn-warning">Ubah</button>
+                                                <button class="hapus btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                                <button class="ubah btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -95,7 +94,10 @@
                                             <td>X</td>
                                             <td>X</td>
                                             <td>X</td>
-                                            <td>X</td>
+                                            <td>
+                                                <button class="hapus btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                                <button class="ubah btn btn-warning btn-sm"><i class="fa fa-edit"></i></button>
+                                            </td>
                                         </tr>
                                         </tfoot>
                                 </table>
@@ -166,7 +168,7 @@
         $('.tambah').click(function() {
             var aksi = 'Tambah Kelas';
             $.ajax({
-                url: '<?php echo base_url('/kelas/tambah'); ?>',
+                url: '<?php echo base_url('/siswa/tambah'); ?>',
                 method: 'post',
                 data: {
                     aksi: aksi
@@ -176,6 +178,40 @@
                     $('#tampil_modal').html(data);
                     document.getElementById("judul").innerHTML = 'Tambah Data Kelas';
 
+                }
+            });
+        });
+
+        $('.ubah').click(function() {
+
+            var kode_kelas = $(this).attr("kode_kelas");
+            $.ajax({
+                url: '<?php echo base_url(); ?>/siswa/ubah',
+                method: 'post',
+                data: {
+                    kode_kelas: kode_kelas
+                },
+                success: function(data) {
+                    $('#myModal').modal("show");
+                    $('#tampil_modal').html(data);
+                    document.getElementById("judul").innerHTML = 'Edit Data';
+                }
+            });
+        });
+
+        $('.hapus').click(function() {
+
+            var nim = $(this).attr("kode_kelas");
+            $.ajax({
+                url: '<?php echo base_url(); ?>/siswa/hapus',
+                method: 'post',
+                data: {
+                    nim: nim
+                },
+                success: function(data) {
+                    $('#myModal').modal("show");
+                    $('#tampil_modal').html(data);
+                    document.getElementById("judul").innerHTML = 'Hapus Data';
                 }
             });
         });
