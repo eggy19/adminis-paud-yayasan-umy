@@ -1,26 +1,22 @@
 <form method="post" id="form">
     <div class="form-group">
         <label for="email">Kode Kelas:</label>
-        <input type="text" class="form-control" name="kode_kelas" placeholder="Masukan Kode Kelas">
+        <input type="text" class="form-control" name="nim" placeholder="Masukan Kode Kelas">
     </div>
     <div class="form-group">
         <label for="email">Nama Kelas:</label>
-        <input type="text" class="form-control" name="nama_kelas" placeholder="Masukan Nama Kelas">
+        <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kelas">
     </div>
     <div class="form-group">
         <label>Kelompok:</label>
-        <select class="form-control" name="kelompok">
+        <select class="form-control" name="jurusan">
             <option value="TI">Teknik Informatika</option>
             <option value="SI">Sistem Informasi</option>
             <option value="TK">Teknik Komputer</option>
             <option value="MI">Manajemen Informatika</option>
         </select>
     </div>
-    <div class="form-group">
-        <label for="email">Wali Kelas:</label>
-        <input type="text" class="form-control" name="wali" placeholder="Masukan Nama Wali">
-    </div>
-    <button id="tombol_tambah" type="button" class="btn btn-primary" data-dismiss="modal">Simpan</button>
+    <button id="tombol_tambah" type="button" class="btn btn-primary" data-dismiss="modal">Simpan Perubahan</button>
 </form>
 
 <script type="text/javascript">
