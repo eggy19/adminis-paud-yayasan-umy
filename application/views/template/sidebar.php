@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-        <!-- <img src="<?php echo base_url('assets/templates/dist') ?>/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-        <span class="brand-text font-weight-light ml-4">Administrasi Paud/Tk</span>
+        <img src="<?php echo base_url('assets') ?>/img/logoAisy.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light ml-2">YAYASAN AISYIYAH</span>
     </a>
 
     <!-- Sidebar -->
@@ -53,19 +53,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/forms/general.html" class="nav-link">
+                            <a href="<?= base_url('kelas') ?>" class="nav-link">
                                 <i class="text-warning far fa-circle nav-icon"></i>
                                 <p>Data Kelas</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/advanced.html" class="nav-link">
+                            <a href="<?= base_url('siswa') ?>" class="nav-link">
                                 <i class="text-warning far fa-circle nav-icon"></i>
                                 <p>Data Siswa</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/editors.html" class="nav-link">
+                            <a href="<?= base_url('guru') ?>" class="nav-link">
                                 <i class="text-warning far fa-circle nav-icon"></i>
                                 <p>Data Guru</p>
                             </a>
@@ -80,16 +80,15 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <i class=""></i>
+                        <i class="nav-icon fas fa-school"></i>
                         <p>
-                            Profil Sekolah
+                            Sekolah
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
+                            <a href="<?= base_url('profil') ?>" class="nav-link">
                                 <i class="text-info far fa-circle nav-icon"></i>
                                 <p>Data Profil</p>
                             </a>
@@ -114,12 +113,11 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-header">KEUANGAN</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
+                        <i class="nav-icon fas fa-credit-card"></i>
                         <p>
-                            Data Keuangan
+                            Keuangan RAPB
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
@@ -127,7 +125,7 @@
                         <li class="nav-item">
                             <a href="pages/tables/simple.html" class="nav-link">
                                 <i class="text-danger far fa-circle nav-icon"></i>
-                                <p>Sumber Masuk</p>
+                                <p>Pendapatan</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -148,6 +146,72 @@
                             <a href="pages/tables/data.html" class="nav-link">
                                 <i class="text-danger far fa-circle nav-icon"></i>
                                 <p>Arus Pengeluaran</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="iframe.html" class="nav-link">
+                        <i class="nav-icon fas fa-download"></i>
+                        <p>Download</p>
+                    </a>
+                </li>
+                <li class="nav-header">ADMINISTRATOR</li>
+                <li class="nav-item">
+                    <a href="iframe.html" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>Akun Sekolah</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+                        <i class="nav-icon fas fa-upload"></i>
+                        <p>Upload File</p>
+                    </a>
+                </li>
+                <li class="nav-header">LAPORAN</li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>
+                            Data Sekolah
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="pages/tables/simple.html" class="nav-link">
+                                <i class="text-success far fa-circle nav-icon"></i>
+                                <p>Siswa</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/tables/data.html" class="nav-link">
+                                <i class="text-success far fa-circle nav-icon"></i>
+                                <p>Guru</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-folder-open"></i>
+                        <p>
+                            Keuangan Sekolah
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="pages/tables/simple.html" class="nav-link">
+                                <i class="text-success far fa-circle nav-icon"></i>
+                                <p>Siswa</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/tables/data.html" class="nav-link">
+                                <i class="text-success far fa-circle nav-icon"></i>
+                                <p>Guru</p>
                             </a>
                         </li>
                     </ul>
