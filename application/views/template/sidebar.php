@@ -8,26 +8,16 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="<?php echo base_url('assets/templates/dist') ?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
-            </div>
-        </div>
-
-        <!-- SidebarSearch Form -->
-        <!-- <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
+        <?php if ($this->session->userdata('role_id') != 1) { ?>
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="<?php echo base_url('assets/templates/dist') ?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">Alexander Pierce</a>
                 </div>
             </div>
-        </div> -->
+        <?php } ?>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -42,181 +32,183 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">SEKOLAH</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Master Data
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= base_url('kelas') ?>" class="nav-link">
-                                <i class="text-warning far fa-circle nav-icon"></i>
-                                <p>Data Kelas</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('siswa') ?>" class="nav-link">
-                                <i class="text-warning far fa-circle nav-icon"></i>
-                                <p>Data Siswa</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('guru') ?>" class="nav-link">
-                                <i class="text-warning far fa-circle nav-icon"></i>
-                                <p>Data Guru</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/forms/validation.html" class="nav-link">
-                                <i class="text-warning far fa-circle nav-icon"></i>
-                                <p>Data Kelompok</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-school"></i>
-                        <p>
-                            Sekolah
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= base_url('profil') ?>" class="nav-link">
-                                <i class="text-info far fa-circle nav-icon"></i>
-                                <p>Data Profil</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="text-info far fa-circle nav-icon"></i>
-                                <p>Data Prestasi</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="text-info far fa-circle nav-icon"></i>
-                                <p>Galeri Kegiatan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="text-info far fa-circle nav-icon"></i>
-                                <p>Struktur Organisasi</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-credit-card"></i>
-                        <p>
-                            Keuangan RAPB
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
-                                <i class="text-danger far fa-circle nav-icon"></i>
-                                <p>Pendapatan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="text-danger far fa-circle nav-icon"></i>
-                                <p>Mata Anggaran</p>
-                            </a>
-                        </li>
+                <?php if ($this->session->userdata('role_id') == 2) { ?>
+                    <li class="nav-header">SEKOLAH</li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-edit"></i>
+                            <p>
+                                Master Data
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url('kelas') ?>" class="nav-link">
+                                    <i class="text-warning far fa-circle nav-icon"></i>
+                                    <p>Data Kelas</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('siswa') ?>" class="nav-link">
+                                    <i class="text-warning far fa-circle nav-icon"></i>
+                                    <p>Data Siswa</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= base_url('guru') ?>" class="nav-link">
+                                    <i class="text-warning far fa-circle nav-icon"></i>
+                                    <p>Data Guru</p>
+                                </a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a href="pages/forms/validation.html" class="nav-link">
+                                    <i class="text-warning far fa-circle nav-icon"></i>
+                                    <p>Data Kelompok</p>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-school"></i>
+                            <p>
+                                Sekolah
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= base_url('profil') ?>" class="nav-link">
+                                    <i class="text-info far fa-circle nav-icon"></i>
+                                    <p>Data Profil</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="text-info far fa-circle nav-icon"></i>
+                                    <p>Data Prestasi</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="text-info far fa-circle nav-icon"></i>
+                                    <p>Galeri Kegiatan</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="text-info far fa-circle nav-icon"></i>
+                                    <p>Struktur Organisasi</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-credit-card"></i>
+                            <p>
+                                Keuangan RAPB
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/tables/simple.html" class="nav-link">
+                                    <i class="text-danger far fa-circle nav-icon"></i>
+                                    <p>Pendapatan</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="text-danger far fa-circle nav-icon"></i>
+                                    <p>Mata Anggaran</p>
+                                </a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="text-danger far fa-circle nav-icon"></i>
-                                <p>Arus Pemasukan</p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="text-danger far fa-circle nav-icon"></i>
+                                    <p>Arus Pemasukan</p>
+                                </a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="text-danger far fa-circle nav-icon"></i>
-                                <p>Arus Pengeluaran</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="iframe.html" class="nav-link">
-                        <i class="nav-icon fas fa-download"></i>
-                        <p>Download</p>
-                    </a>
-                </li>
-                <li class="nav-header">ADMINISTRATOR</li>
-                <li class="nav-item">
-                    <a href="iframe.html" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>Akun Sekolah</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                        <i class="nav-icon fas fa-upload"></i>
-                        <p>Upload File</p>
-                    </a>
-                </li>
-                <li class="nav-header">LAPORAN</li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>
-                            Data Sekolah
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
-                                <i class="text-success far fa-circle nav-icon"></i>
-                                <p>Siswa</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="text-success far fa-circle nav-icon"></i>
-                                <p>Guru</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-folder-open"></i>
-                        <p>
-                            Keuangan Sekolah
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
-                                <i class="text-success far fa-circle nav-icon"></i>
-                                <p>Siswa</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="text-success far fa-circle nav-icon"></i>
-                                <p>Guru</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- <li class="nav-item">
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="text-danger far fa-circle nav-icon"></i>
+                                    <p>Arus Pengeluaran</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="iframe.html" class="nav-link">
+                            <i class="nav-icon fas fa-download"></i>
+                            <p>Download</p>
+                        </a>
+                    </li>
+                <?php } elseif ($this->session->userdata('role_id') == 1) { ?>
+                    <li class="nav-header">ADMINISTRATOR</li>
+                    <li class="nav-item">
+                        <a href="<?= base_url('admin/akun') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>Akun Sekolah</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+                            <i class="nav-icon fas fa-upload"></i>
+                            <p>Upload File</p>
+                        </a>
+                    </li>
+                    <li class="nav-header">LAPORAN</li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>
+                                Data Sekolah
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/tables/simple.html" class="nav-link">
+                                    <i class="text-success far fa-circle nav-icon"></i>
+                                    <p>Siswa</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="text-success far fa-circle nav-icon"></i>
+                                    <p>Guru</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-folder-open"></i>
+                            <p>
+                                Keuangan Sekolah
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/tables/simple.html" class="nav-link">
+                                    <i class="text-success far fa-circle nav-icon"></i>
+                                    <p>Siswa</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="text-success far fa-circle nav-icon"></i>
+                                    <p>Guru</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
@@ -320,19 +312,20 @@
                         </li>
                     </ul>
                 </li> -->
-                <li class="nav-header">GRAFIK</li>
-                <li class="nav-item">
-                    <a href="iframe.html" class="nav-link">
-                        <i class="nav-icon fas fa-ellipsis-h"></i>
-                        <p>Tabbed IFrame Plugin</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>Documentation</p>
-                    </a>
-                </li>
+                    <li class="nav-header">GRAFIK</li>
+                    <li class="nav-item">
+                        <a href="iframe.html" class="nav-link">
+                            <i class="nav-icon fas fa-ellipsis-h"></i>
+                            <p>Tabbed IFrame Plugin</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>Documentation</p>
+                        </a>
+                    </li>
+                <?php } ?>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
