@@ -116,27 +116,13 @@
                             <li class="nav-item">
                                 <a href="pages/tables/simple.html" class="nav-link">
                                     <i class="text-danger far fa-circle nav-icon"></i>
+                                    <p>Pengeluaran</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="text-danger far fa-circle nav-icon"></i>
                                     <p>Pendapatan</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
-                                    <i class="text-danger far fa-circle nav-icon"></i>
-                                    <p>Mata Anggaran</p>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
-                                    <i class="text-danger far fa-circle nav-icon"></i>
-                                    <p>Arus Pemasukan</p>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
-                                    <i class="text-danger far fa-circle nav-icon"></i>
-                                    <p>Arus Pengeluaran</p>
                                 </a>
                             </li>
                         </ul>

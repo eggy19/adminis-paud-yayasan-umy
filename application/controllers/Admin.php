@@ -80,8 +80,59 @@ class Admin extends CI_Controller
         $this->db->insert('profil_sekolah', $profil);
     }
 
-    public function tambah_akun()
+    //Halaman Upload File
+    public function uploadfile()
     {
-        $this->load->view('admin/akun/tambah');
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
+        $data['judul_halaman'] = 'Upload File';
+        $this->load->view('admin/upload/index', $data);
+    }
+
+
+
+    public function simpan_upload()
+    {
+        $this->load->model('upload_model');
+        $this->upload_model->uploadFile();
+
+        if ($this->upload->do_upload('uploadfile')) {
+            $foto =  $this->upload->data('file_name');
+
+            $data = [
+                'user_id' => $this->input->post('user_id'),
+                'nama_file' => $this->input->post('nama'),
+                'file' => $foto
+            ];
+            $this->db->insert('upload', $data);
+            redirect('admin/uploadfile');
+        } else {
+
+            $error = array('error' => $this->upload->display_errors());
+        }
+    }
+
+    public function data_file()
+    {
+        $data['upload'] = $this->db->get('upload')->result_object();
+        $this->load->view('admin/upload/data-table', $data);
+    }
+
+    public function hapus()
+    {
+        //ambil id_guru dari post ajax
+        $id = $this->input->post('id');
+        $data['upload'] = $this->db->get_where('upload', array('id' => $id))->row();
+        $this->load->view('admin/upload/hapus', $data);
+    }
+
+    public function hapus_file()
+    {
+        $id = $this->input->post('id_file');
+        $file = $this->db->get_where('upload', ['id' => $id])->row();
+        $query = $this->db->delete('upload', array('id' => $id));
+
+        if ($query) {
+            unlink("./assets/berkas/" . $file->file);
+        }
     }
 }

@@ -1,64 +1,93 @@
-<form method="post" id="form">
-    <div class="form-group">
-        <label for="email">Nomor Induk:</label>
-        <input type="text" class="form-control" name="kode_kelas" placeholder="Masukan Kode Kelas">
-    </div>
-    <div class="form-group">
+<form method="post" enctype="multipart/form-data" id="form">
+    <div class=" form-group">
         <label for="email">Nama Guru:</label>
-        <input type="text" class="form-control" name="nama_kelas" placeholder="Masukan Nama Kelas">
+        <input type="text" class="form-control" name="nm_guru" placeholder="Masukan Nama Guru">
     </div>
     <div class="form-group">
-        <label>Kelompok:</label>
-        <select class="form-control" name="kelompok">
-            <option value="L">Laki-laki</option>
-            <option value="P">Perempuan</option>
-        </select>
+        <label for="email">Tempat Lahir:</label>
+        <input type="text" class="form-control" name="t_lahir">
     </div>
     <div class="form-group">
-        <label for="email">TMT:</label>
-        <input type="date" class="form-control" name="tmt">
-    </div>
-    <div class="form-group">
-        <label for="email">NBM:</label>
-        <input type="text" class="form-control" name="nbm">
+        <label for="email">Tanggal Lahir:</label>
+        <input type="date" class="form-control" name="tgl_lahir">
     </div>
     <div class="form-group">
         <label for="email">Alamat:</label>
         <input type="text" class="form-control" name="alamat">
     </div>
     <div class="form-group">
+        <label for="email">TMT:</label>
+        <input type="text" class="form-control" name="tmt">
+    </div>
+    <div class="form-group">
+        <label for="email">NBM:</label>
+        <input type="text" class="form-control" name="nbm">
+    </div>
+    <div class="form-group">
         <label for="email">No Telepon:</label>
         <input type="text" class="form-control" name="no_hp">
     </div>
     </div>
-    <label for="email">Foto:</label>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Upload</span>
-        </div>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" name="foto">
-            <label class="custom-file-label">Pilih Foto</label>
-        </div>
-    </div>
     <div class="form-group">
+        <label for="exampleInputFile">Pilih Foto</label>
+        <div class="input-group">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="exampleInputFile" name="foto">
+                <label class="custom-file-label" for="exampleInputFile">Pilih file</label>
+            </div>
+            <div class="input-group-append">
+                <span class="input-group-text">Upload</span>
+            </div>
+        </div>
     </div>
-    <button id="tombol_tambah" type="button" class="btn btn-primary" data-dismiss="modal">Simpan</button>
+    <div id="pesan">
+    </div>
+    <button id="tombol_tambah" type="button" class="btn btn-primary mt-3">Simpan</button>
 </form>
 
+<!-- bs-custom-file-input -->
+<script src="<?= base_url('assets/templates/') ?>plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#tombol_tambah").click(function() {
-            var data = $('#form').serialize();
-            $.ajax({
-                type: 'POST',
-                url: "<?php echo base_url(); ?>/mahasiswa/simpanMahasiswa",
-                data: data,
-                cache: false,
-                success: function(data) {
-                    $('#tampil').load("<?php echo base_url(); ?>/mahasiswa/tampilMahasiswa");
+    $(function() {
+        bsCustomFileInput.init();
+    });
+
+    // $(document).ready(function() {
+    //     $("#tombol_tambah").click(function() {
+    //         var data = $('#form').serialize();
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: "<?php echo base_url(); ?>guru/simpanGuru",
+    //             data: data,
+    //             dataType: json,
+    //             cache: false,
+    //             success: function(data) {
+    //                 $('#tampil').load("<?php echo base_url(); ?>/guru/tampilGuru");
+    //                 console.log(data);
+    //             }
+    //         });
+    //     });
+    // });
+
+    $("#tombol_tambah").on('click', function() {
+        // var data = $('#form').serialize();
+        $.ajax({
+            url: "<?php echo base_url(); ?>guru/simpanGuru",
+            type: 'POST',
+            dataType: 'json',
+            data: $('#form').serialize(),
+            success: function(data) {
+                if ($.isEmptyObject(data.error)) {
+                    console.log(data.success);
+                    alert(data.success);
+                } else {
+                    console.log(data.error);
+                    $("#pesan").html('<div class="alert alert-warning"><small  class="text text-danger">' + data.error + '</small></div>');
                 }
-            });
+
+            }
         });
     });
+    // $(document).ready(function() {
+    // });
 </script>
