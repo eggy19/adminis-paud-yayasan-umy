@@ -36,44 +36,44 @@ class Guru extends CI_Controller
         $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
         $user_id = $user->id;
 
-        $this->validasi();
+        $this->validasi(); //method validasi input
+        $this->form_validation->set_rules('no_hp', 'No Telepon', 'trim|required|is_unique[guru.no_hp]', [
+            'is_unique' => 'No Telepon sudah terdaftar!'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $errors = validation_errors();
             echo json_encode(['error' => $errors]);
         } else {
-            echo json_encode(['success' => 'Record added successfully.']);
+            //alur dan validasi untuk upload
+            $this->load->model('upload_model');
+            $this->upload_model->uploadIMG();
+            if ($this->upload->do_upload('foto')) { //jika foto ada
+
+                $data = [ //persiapan simpan ke db
+                    'user_id' => $user_id,
+                    'nama' => $this->input->post('nm_guru'),
+                    't_lahir' => $this->input->post('t_lahir'),
+                    'tgl_lahir' => $this->input->post('tgl_lahir'),
+                    'alamat' => $this->input->post('alamat'),
+                    'no_hp' => $this->input->post('no_hp'),
+                    'tmt' => $this->input->post('tmt'),
+                    'nbm' => $this->input->post('nbm'),
+                    'foto' =>  $this->upload->data('file_name')
+                ];
+
+
+                $query =  $this->db->insert('guru', $data);
+                if ($query) {
+                    echo json_encode(['success' => 'Berhasil Disimpan']);
+                } else {
+                    echo json_encode(['Error' => 'Gagal Disimpan']);
+                }
+            } else {
+                $error = array('error' => $this->upload->display_errors());
+                echo json_encode($error);
+            }
         }
-
-
-
-        // $data = [
-        //     'user_id' => $user_id,
-        //     'nama' => $this->input->post('nm_guru'),
-        //     't_lahir' => $this->input->post('t_lahir'),
-        //     'tgl_lahir' => $this->input->post('tgl_lahir'),
-        //     'alamat' => $this->input->post('alamat'),
-        //     'no_hp' => $this->input->post('no_hp'),
-        //     'tmt' => $this->input->post('tmt'),
-        //     'nbm' => $this->input->post('nbm'),
-        //     'foto' =>  null
-        // ];
-
-        // var_dump($data);
-
-        // $this->db->insert('guru', $data);
-        // // redirect('guru/index');
-        // json_encode('sukses');
-
-        // $upload = $this->Upload_model->uploadIMG();
-        // //cek upload gambar
-        // if ($upload['result'] == "success") {
-
-        // } else {
-        //     $this->session->set_flashdata('error', $upload['error']);
-        //     redirect(base_url('guru/index'), 'refresh');
-        //     json_encode('gagal');
-        // }
     }
 
     public function ubah()
@@ -82,6 +82,55 @@ class Guru extends CI_Controller
         $id = $this->input->post('id');
         $data['guru'] = $this->db->get_where('guru', array('id' => $id))->row();
         $this->load->view('guru/ubah', $data);
+    }
+
+    public function ubahGuru()
+    {
+        $this->validasi(); //method validasi input
+        $this->form_validation->set_rules('no_hp', 'No Telepon', 'trim|required');
+        if ($this->form_validation->run() == false) { //cek validasi input
+            $errors = validation_errors();
+            echo json_encode(['error' => $errors]);
+        } else {
+            $cek_foto = $_FILES['foto']['name'];
+            $input_foto = $this->input->post('exist_foto'); //dari input exist_foto
+            //cek ada foto atau tidak
+            if ($cek_foto != null) {
+
+                unlink('./assets/img/foto_guru/' . $input_foto); //hapus foto sebelumnya
+                //alur dan validasi untuk upload
+                $this->load->model('upload_model');
+                $this->upload_model->uploadIMG();
+                if ($this->upload->do_upload('foto')) { //jika foto ada
+                    $foto = $this->upload->data('file_name');
+                } else {
+                    $error = array('error' => $this->upload->display_errors());
+                    echo json_encode($error);
+                }
+            } else {
+                $foto = $input_foto;
+            }
+
+            $where = [
+                'id' => $this->input->post('id_guru')
+            ];
+
+            $data = [ //persiapan simpan ke db
+                'user_id' => $this->input->post('user_id'),
+                'nama' => $this->input->post('nm_guru'),
+                't_lahir' => $this->input->post('t_lahir'),
+                'tgl_lahir' => $this->input->post('tgl_lahir'),
+                'alamat' => $this->input->post('alamat'),
+                'no_hp' => $this->input->post('no_hp'),
+                'tmt' => $this->input->post('tmt'),
+                'nbm' => $this->input->post('nbm'),
+                'foto' =>  $foto
+            ];
+            $this->db->where($where);
+            $this->db->update('guru',  $data);
+
+            echo json_encode(['success' => 'Berhasil Ubah Data']);
+        }
     }
 
     public function hapus()
@@ -100,12 +149,11 @@ class Guru extends CI_Controller
 
     private function validasi()
     {
-        $this->form_validation->set_rules('nm_guru', 'nama', 'trim|required');
-        $this->form_validation->set_rules('t_lahir', 't_lahir', 'trim|required');
-        $this->form_validation->set_rules('tgl_lahir', 'tgl_lahir', 'trim|required');
-        $this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
-        $this->form_validation->set_rules('tmt', 'tmt', 'trim|required');
-        $this->form_validation->set_rules('nbm', 'nbm', 'trim|required');
-        $this->form_validation->set_rules('no_hp', 'no_hp', 'trim|required');
+        $this->form_validation->set_rules('nm_guru', 'Nama Guru', 'trim|required');
+        $this->form_validation->set_rules('t_lahir', 'Tempat Lahir', 'trim|required');
+        $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'trim|required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required');
+        $this->form_validation->set_rules('tmt', 'TMT', 'trim|required');
+        $this->form_validation->set_rules('nbm', 'NBM', 'trim|required');
     }
 }

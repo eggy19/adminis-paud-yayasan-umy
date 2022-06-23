@@ -128,7 +128,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="iframe.html" class="nav-link">
+                        <a href="<?= base_url('user/download') ?>" class="nav-link">
                             <i class="nav-icon fas fa-download"></i>
                             <p>Download</p>
                         </a>
@@ -142,7 +142,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+                        <a href="<?= base_url('admin/uploadfile') ?>" class="nav-link">
                             <i class="nav-icon fas fa-upload"></i>
                             <p>Upload File</p>
                         </a>

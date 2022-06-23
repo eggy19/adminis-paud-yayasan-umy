@@ -11,11 +11,9 @@
                 type: 'POST',
                 url: "<?php echo base_url(); ?>guru/hapusGuru",
                 data: data,
-
                 cache: false,
                 success: function(data) {
-                    $('#tampil-tabel').load("<?php echo base_url(); ?>/guru/tampilGuru");
-
+                    $('#tampil').load("<?php echo base_url(); ?>/guru/tampilGuru");
                 }
             });
         });
