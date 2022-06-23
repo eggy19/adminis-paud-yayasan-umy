@@ -1,41 +1,16 @@
-<form method="post" id="form">
-    <div class="form-group">
-        <label for="email">Kode Kelas:</label>
-        <input type="text" class="form-control" name="kode_kelas" placeholder="Masukan Kode Kelas">
-    </div>
+<form action="<?= base_url('kelas/simpanKelas') ?>" method="post" id="form">
     <div class="form-group">
         <label for="email">Nama Kelas:</label>
-        <input type="text" class="form-control" name="nama_kelas" placeholder="Masukan Nama Kelas">
+        <input type="text" class="form-control" name="kelas" placeholder="Masukan Nama Kelas" required>
     </div>
     <div class="form-group">
-        <label>Kelompok:</label>
-        <select class="form-control" name="kelompok">
-            <option value="TI">Teknik Informatika</option>
-            <option value="SI">Sistem Informasi</option>
-            <option value="TK">Teknik Komputer</option>
-            <option value="MI">Manajemen Informatika</option>
-        </select>
+        <label for="email">Wali Kelas 1:</label>
+        <input type="text" class="form-control" name="wali_kelas1" placeholder="Masukan Nama Wali Kelas" required>
     </div>
     <div class="form-group">
-        <label for="email">Wali Kelas:</label>
-        <input type="text" class="form-control" name="wali" placeholder="Masukan Nama Wali">
+        <label for="email">Wali Kelas 2:</label>
+        <input type="text" class="form-control" name="wali_kelas2" placeholder="Masukan Nama Wali Kelas">
+        <small class="text text-danger">* Wali Kelas dapat diisi satu saja</small>
     </div>
-    <button id="tombol_tambah" type="button" class="btn btn-primary" data-dismiss="modal">Simpan</button>
+    <button id="tombol_tambah" type="submit" class="btn btn-primary">Simpan</button>
 </form>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#tombol_tambah").click(function() {
-            var data = $('#form').serialize();
-            $.ajax({
-                type: 'POST',
-                url: "<?php echo base_url(); ?>/mahasiswa/simpanMahasiswa",
-                data: data,
-                cache: false,
-                success: function(data) {
-                    $('#tampil').load("<?php echo base_url(); ?>/mahasiswa/tampilMahasiswa");
-                }
-            });
-        });
-    });
-</script>

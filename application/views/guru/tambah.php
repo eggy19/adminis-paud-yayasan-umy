@@ -48,6 +48,7 @@
     </div>
     <div id="pesan">
     </div>
+    <img src="<?= base_url('assets/img/foto_guru/') ?>" alt="">
     <button id="tombol_tambah" type="submit" class="btn btn-primary mt-3">Simpan</button>
 </form>
 
@@ -58,22 +59,6 @@
         bsCustomFileInput.init();
     });
 
-    // $(document).ready(function() {
-    //     $("#tombol_tambah").click(function() {
-    //         var data = $('#form').serialize();
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: "<?php echo base_url(); ?>guru/simpanGuru",
-    //             data: data,
-    //             dataType: json,
-    //             cache: false,
-    //             success: function(data) {
-    //                 $('#tampil').load("<?php echo base_url(); ?>/guru/tampilGuru");
-    //                 console.log(data);
-    //             }
-    //         });
-    //     });
-    // });
     $(document).ready(function() {
 
         $("#form").submit(function(e) {

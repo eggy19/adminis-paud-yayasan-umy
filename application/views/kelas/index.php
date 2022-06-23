@@ -28,11 +28,12 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                <?= $this->session->flashdata('msg'); ?>
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Table Data Siswa Paud</h3>
+                                <h3 class="card-title">Table Data Kelas</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -41,41 +42,28 @@
                                 </button>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
+
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode Kelas</th>
                                             <th>Nama Kelas</th>
-                                            <th>Kelompok</th>
                                             <th>Wali Kelas</th>
                                             <th>Aksi</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>KLS-01
-                                            </td>
-                                            <td>0 KECIL</td>
-                                            <td>kANGURU</td>
-                                            <td>Mas Rafi</td>
-                                            <td>
-                                                <button class="hapus btn btn-danger">Hapus</button>
-                                                <button class="ubah btn btn-warning">Ubah</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>KLS-02
-                                            </td>
-                                            <td>0 Besar</td>
-                                            <td>BEBEK</td>
-                                            <td>Mas Udin</td>
-                                            <td>
-                                                <button class="hapus btn btn-danger">Hapus</button>
-                                                <button class="ubah btn btn-warning">Ubah</button>
-                                            </td>
-                                        </tr>
+                                        <?php $a = 1;
+                                        foreach ($kelas as $i) { ?>
+                                            <tr>
+                                                <td><?= $a++ ?></td>
+                                                <td><?= $i->kelas ?></td>
+                                                <td><?= $i->wali_kelas1 . ', <br>' . $i->wali_kelas2  ?></td>
+                                                <td class="project-actions text-center">
+                                                    <button class="hapus btn btn-danger btn-sm" data='<?= $i->id ?>'><i class="fas fa-trash"> Hapus</i></button>
+                                                    <button class="ubah btn btn-warning btn-sm" data='<?= $i->id ?>'><i class="fas fa-edit"> Edit </i></button>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                         </tfoot>
                                 </table>
                             </div>
@@ -161,12 +149,12 @@
 
         $('.ubah').click(function() {
 
-            var kode_kelas = $(this).attr("kode_kelas");
+            var id = $(this).attr("data");
             $.ajax({
                 url: '<?php echo base_url(); ?>/kelas/ubah',
                 method: 'post',
                 data: {
-                    kode_kelas: kode_kelas
+                    id: id
                 },
                 success: function(data) {
                     $('#myModal').modal("show");
@@ -178,12 +166,12 @@
 
         $('.hapus').click(function() {
 
-            var nim = $(this).attr("kode_kelas");
+            var id = $(this).attr("data");
             $.ajax({
                 url: '<?php echo base_url(); ?>/kelas/hapus',
                 method: 'post',
                 data: {
-                    nim: nim
+                    id: id
                 },
                 success: function(data) {
                     $('#myModal').modal("show");
