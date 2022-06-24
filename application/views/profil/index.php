@@ -28,6 +28,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                <?= $this->session->flashdata('msg'); ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-success">
@@ -46,7 +47,7 @@
                                         <div class="col-md-4">
                                             <label for="inputName">Logo Sekolah</label>
                                             <div class="text-center mb-5 mt-4">
-                                                <img src="<?= base_url('assets/templates/dist/img/avatar.png') ?>" class="rounded " alt="image-profil">
+                                                <img src="<?= base_url('assets/img/logo_sekolah/' . $i->logo) ?>" class="rounded " alt="image-profil" style="width:300px ;">
                                             </div>
                                             <div class="form-group">
                                                 <a href="<?= base_url('profil/ubah') ?>" class="btn btn-warning form-control">Ubah Data Profil</a>

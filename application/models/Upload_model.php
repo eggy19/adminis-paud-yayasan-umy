@@ -21,4 +21,13 @@ class Upload_model extends CI_Model
 
         $this->load->library('upload', $config);
     }
+
+    public function uploadLogo()
+    {
+        $config['upload_path']          = './assets/img/logo_sekolah/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 3000;
+
+        $this->load->library('upload', $config);
+    }
 }

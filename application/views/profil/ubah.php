@@ -41,24 +41,24 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form action="<?php echo base_url('profil/update'); ?>" method="post">
+                                <form action="<?php echo base_url('profil/update'); ?>" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <?php foreach ($profil as $i) : ?>
                                             <div class="col-md-4">
                                                 <label for="inputName">Logo Sekolah</label>
                                                 <input type="text" hidden name="id" value="<?= $i->id ?>">
                                                 <input type="text" hidden name="id_user" value="<?= $i->user_id ?>">
+                                                <input type="text" hidden name="exist_logo" value="<?= $i->logo ?>">
                                                 <div class="form-group">
                                                     <label for="exampleInputFile">File input</label>
                                                     <div class="input-group">
                                                         <div class="custom-file">
                                                             <input type="file" class="custom-file-input" id="exampleInputFile" name="logo">
-                                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                            <label class="custom-file-label" for="exampleInputFile">pilih logo</label>
                                                         </div>
-                                                        <div class="input-group-append">
-                                                            <span class="input-group-text">Upload</span>
-                                                        </div>
+
                                                     </div>
+                                                    <small>*pilih jika ingin ganti logo</small>
                                                 </div>
                                                 <div class="form-group mt-4">
                                                     <button type="submit" class="btn btn-primary form-control">Update Profil</button>
@@ -70,27 +70,27 @@
                                             <div class="col ml-4 isi-profil">
                                                 <div class="form-group">
                                                     <label for="inputName">Nama Sekolah</label>
-                                                    <input type="text" id="inputName" class="form-control" name="sekolah" value="<?= $i->nama_sekolah ?>">
+                                                    <input type="text" id="inputName" class="form-control" name="sekolah" value="<?= $i->nama_sekolah ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputName">NPSN</label>
-                                                    <input type="text" id="inputName" class="form-control" name="npsn" value="<?= $i->npsn ?>">
+                                                    <input type="text" id="inputName" class="form-control" name="npsn" value="<?= $i->npsn ?>" required>
                                                 </div>
                                                 <div class=" form-group">
                                                     <label for="inputDescription">Alamat</label>
-                                                    <textarea id="inputDescription" class="form-control" rows="4" name="alamat"><?= $i->alamat ?></textarea>
+                                                    <textarea id="inputDescription" class="form-control" rows="4" name="alamat" required><?= $i->alamat ?></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputDescription">Visi</label>
-                                                    <textarea id="inputDescription" class="form-control" rows="4" name="visi"><?= $i->visi ?></textarea>
+                                                    <textarea id="inputDescription" class="form-control" rows="4" name="visi" required><?= $i->visi ?></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputDescription">Misi</label>
-                                                    <textarea id="inputDescription" class="form-control" rows="4" name="misi"><?= $i->misi ?></textarea>
+                                                    <textarea id="inputDescription" class="form-control" rows="4" name="misi" required><?= $i->misi ?></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputDescription">Tujuan</label>
-                                                    <textarea id="inputDescription" class="form-control" rows="4" name="tujuan"><?= $i->tujuan ?></textarea>
+                                                    <textarea id="inputDescription" class="form-control" rows="4" name="tujuan" required><?= $i->tujuan ?></textarea>
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>

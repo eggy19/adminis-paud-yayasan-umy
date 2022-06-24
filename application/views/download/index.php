@@ -33,7 +33,7 @@
                     <div class="col">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Tabel Data Akun Pengguna</h3>
+                                <h3 class="card-title">Tabel berkas Download</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">

@@ -85,7 +85,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
+                                <a href="<?= base_url('prestasi') ?>" class="nav-link">
                                     <i class="text-info far fa-circle nav-icon"></i>
                                     <p>Data Prestasi</p>
                                 </a>
@@ -96,16 +96,10 @@
                                     <p>Galeri Kegiatan</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
-                                    <i class="text-info far fa-circle nav-icon"></i>
-                                    <p>Struktur Organisasi</p>
-                                </a>
-                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="" class="nav-link">
                             <i class="nav-icon fas fa-credit-card"></i>
                             <p>
                                 Keuangan RAPB
@@ -114,13 +108,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/tables/simple.html" class="nav-link">
+                                <a href="<?= base_url('keuangan/pendapatan') ?>" class="nav-link">
                                     <i class="text-danger far fa-circle nav-icon"></i>
                                     <p>Pengeluaran</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
+                                <a href="<?= base_url('keuangan/pengeluaran') ?>" class="nav-link">
                                     <i class="text-danger far fa-circle nav-icon"></i>
                                     <p>Pendapatan</p>
                                 </a>
