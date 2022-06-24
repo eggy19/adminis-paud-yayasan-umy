@@ -90,48 +90,6 @@
 <!-- JS -->
 <?php $this->load->view('template/js'); ?>
 <!-- DataTables  & Plugins -->
-<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="<?php echo base_url('assets/templates/plugins') ?>/jszip/jszip.min.js"></script>
-<script src="<?php echo base_url('assets/templates/plugins') ?>/pdfmake/pdfmake.min.js"></script>
-<script src="<?php echo base_url('assets/templates/plugins') ?>/pdfmake/vfs_fonts.js"></script>
-<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        $.ajax({
-            type: 'POST',
-            url: "<?php echo base_url(); ?>siswa/dataSiswa",
-            cache: false,
-            success: function(data) {
-                $(".data-tabel").html(data);
-            }
-        });
-
-        $('.tambah').click(function() {
-            var aksi = 'Tambah Siswa';
-            $.ajax({
-                url: '<?php echo base_url('siswa/tambah'); ?>',
-                method: 'post',
-                data: {
-                    aksi: aksi
-                },
-                success: function(data) {
-                    $('#myModal').modal("show");
-                    $('#tampil_modal').html(data);
-                    document.getElementById("judul").innerHTML = 'Tambah Data Guru';
-
-                }
-            });
-        });
-    });
-</script>
 
 </body>
 

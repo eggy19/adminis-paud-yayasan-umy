@@ -87,20 +87,20 @@ class Kelas extends CI_Controller
         redirect('kelas');
     }
 
-    public function hapusKelas()
+    public function hapusKelas($id, $kelas)
     {
         $data = [
-            'id' => $this->input->post('kelas_id'),
+            'id' => $id
         ];
 
-        echo json_encode($data);
-        //     $this->db->delete('kelas', $data);
-        //     $this->session->set_flashdata('msg', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        //     <strong>' .  $this->input->post('kelas') . '</strong> Berhasil Terhapus!.
-        //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        //         <span aria-hidden="true">&times;</span>
-        //     </button>
-        // </div>');
-        //     redirect('kelas');
+        // echo json_encode($data);
+        $this->db->delete('kelas', $data);
+        $this->session->set_flashdata('msg', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>' .  $kelas . '</strong> Berhasil Terhapus!.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>');
+        redirect('kelas');
     }
 }
