@@ -33,26 +33,28 @@
                     <div class="col-md-5">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Tambah Akun</h3>
+                                <h3 class="card-title">Tambah Data Prestasi</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <?php echo form_open_multipart('prestasi/simpan') ?>
+                                <?php echo form_open_multipart('prestasi/simpan_prestasi') ?>
                                 <div class="form-group">
+                                    <input type="text" class="form-control" name="user_id" value="<?= $user->id ?>" hidden>
                                     <label for="email">Nama Kegiatan:</label>
-                                    <input type="text" class="form-control" name="prestasi" placeholder="Masukan nama File" required>
+                                    <input type="text" class="form-control" name="nama_kegiatan" placeholder="Masukan nama Kegiatan" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Tanggal Kegiatan:</label>
-                                    <input type="text" class="form-control" name="prestasi" placeholder="Masukan nama File" required>
+                                    <input type="date" class="form-control" name="tanggal" placeholder="Masukan Tanggal Kegiatan" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Lokasi Kegiatan:</label>
-                                    <input type="text" class="form-control" name="prestasi" placeholder="Masukan nama File" required>
+                                    <input type="text" class="form-control" name="lokasi" placeholder="Masukan Lokasi Kegiatan" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Sertifikat:</label>
-                                    <input type="file" class="form-control" name="uploadfile" required>
+                                    <input type="file" class="form-control" name="sertifikat" required>
+                                    <small class="text text-danger">*masukan gambar sertifikat dengan format png atau jpeg</small>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -66,7 +68,7 @@
                     <div class="col">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Tabel Data Akun Pengguna</h3>
+                                <h3 class="card-title">Tabel Data Prestasi</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -122,7 +124,7 @@
     $(document).ready(function() {
         $.ajax({
             type: 'POST',
-            url: "<?php echo base_url(); ?>prestasi/dataPrestasi",
+            url: "<?php echo base_url(); ?>prestasi/data_prestasi",
             cache: false,
             success: function(data) {
                 $("#tampil-tabel").html(data);

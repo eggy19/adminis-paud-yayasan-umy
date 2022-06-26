@@ -55,7 +55,7 @@
                                                 <td><?= $i->nama_file ?></td>
                                                 <td><?= $i->file ?></td>
                                                 <td class="project-actions text-center">
-                                                    <button class="hapus btn btn-dark btn-sm" data="<?= $i->id ?>"><i class="fas fa-download"> Download</i></button>
+                                                    <a href="<?php echo base_url() . 'user/download_file/' . $i->id; ?>" class="btn btn-success btn-sm"><i class="fas fa-download mr-2"></i>Download</a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

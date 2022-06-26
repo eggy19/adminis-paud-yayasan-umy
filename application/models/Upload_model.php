@@ -30,4 +30,30 @@ class Upload_model extends CI_Model
 
         $this->load->library('upload', $config);
     }
+
+    public function uploadSertif()
+    {
+
+        $config['upload_path']          = './assets/sertifikat/prestasi/';
+        $config['allowed_types']        = 'pdf|jpg|png|docx';
+        $config['max_size']             = 6000;
+
+        $this->load->library('upload', $config);
+    }
+
+    public function uploadAlbum()
+    {
+
+        $config['upload_path']          = './assets/img/albums/';
+        $config['allowed_types']        = 'jpg|png';
+        $config['max_size']             = 3000;
+
+        $this->load->library('upload', $config);
+    }
+
+    public function download($id)
+    {
+        $query = $this->db->get_where('upload', array('id' => $id));
+        return $query->row_array();
+    }
 }

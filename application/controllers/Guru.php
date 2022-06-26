@@ -26,7 +26,11 @@ class Guru extends CI_Controller
 
     public function tampilGuru()
     {
-        $data['guru'] = $this->db->get('guru')->result();
+        //ambil data id user
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
+        $user_id = $user->id;
+
+        $data['guru'] = $this->db->get_where('guru', ['user_id' => $user_id])->result();
         $this->load->view('guru/data_table', $data);
     }
 

@@ -43,7 +43,7 @@ class Admin extends CI_Controller
                 'nama' => htmlspecialchars($this->input->post('nama', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'role_id' => 2,
+                'role_id' => htmlspecialchars($this->input->post('role', true)),
                 'created_at' => time()
             ];
             // var_dump($data);
@@ -78,6 +78,20 @@ class Admin extends CI_Controller
         ];
 
         $this->db->insert('profil_sekolah', $profil);
+    }
+
+    public function hapusAkun()
+    {
+        //ambil id_guru dari post ajax
+        $id = $this->input->post('id');
+        $data['user'] = $this->db->get_where('user', array('id' => $id))->row();
+        $this->load->view('admin/akun/hapus', $data);
+    }
+
+    public function deleteAkun($id)
+    {
+        $this->db->delete('user', array('id' => $id));
+        redirect('admin/akun');
     }
 
     //Halaman Upload File

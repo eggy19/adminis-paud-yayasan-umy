@@ -14,7 +14,7 @@
                     <img src="<?php echo base_url('assets/templates/dist') ?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">Administrator Sekolah</a>
                 </div>
             </div>
         <?php } ?>
@@ -25,12 +25,21 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="<?= base_url() ?>" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Beranda
-                        </p>
-                    </a>
+                    <?php if ($this->session->userdata('role_id') == 2) { ?>
+                        <a href="<?= base_url('user/sekolah') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Beranda
+                            </p>
+                        </a>
+                    <?php } else { ?>
+                        <a href="<?= base_url('admin') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Beranda
+                            </p>
+                        </a>
+                    <?php } ?>
                 </li>
                 <?php if ($this->session->userdata('role_id') == 2) { ?>
                     <li class="nav-header">SEKOLAH</li>
@@ -91,7 +100,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
+                                <a href="<?= base_url('albums') ?>" class="nav-link">
                                     <i class="text-info far fa-circle nav-icon"></i>
                                     <p>Galeri Kegiatan</p>
                                 </a>

@@ -1,2 +1,2 @@
-<p>Yakin ingin menghapus <?= $kelas->kelas ?> </p>
-<a href="<?= base_url('kelas/hapusKelas/') . $kelas->id . '/' . $kelas->kelas ?>" class="btn btn-danger">Hapus</a>
+<p>Yakin ingin menghapus <?= $rencana_penggunaan->program ?> / <?= $rencana_penggunaan->waktu_pelaksanaan ?> / <?= $rencana_penggunaan->jumlah ?> </p>
+<a href="<?= base_url('keuangan/hapusPengeluaran/') . $rencana_penggunaan->id . '/' . $rencana_penggunaan->program ?>" class="btn btn-danger">Hapus</a>

@@ -30,7 +30,8 @@
 
     <!-- select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
+    <!-- Ekko Lightbox -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/templates/plugins') ?>/ekko-lightbox/ekko-lightbox.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="<?php echo base_url('assets/templates/plugins') ?>/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?php echo base_url('assets/templates/plugins') ?>/datatables-responsive/css/responsive.bootstrap4.min.css">

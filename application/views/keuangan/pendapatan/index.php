@@ -37,7 +37,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <button type="button" class="tambah btn btn-primary mb-3" id="tambah-siswa" data-toggle="modal" data-target="#myModal">
+                                <button type="button" class="tambah btn btn-primary mb-3" id="tambah-dapat" data-toggle="modal" data-target="#myModal">
                                     Tambah Data
                                 </button>
                                 <table id="example1" class="table table-bordered table-striped">
@@ -46,7 +46,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Sumber Dana</th>
-                                            <th>Jumlah</th>
+                                            <th>Jumlah Pendapatan</th>
                                             <th>Tanggal</th>
                                             <th>Aksi</th>
 
@@ -54,7 +54,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $a = 1;
-                                        foreach ($pendapatan as $i) { ?>
+                                        foreach ($rencana_pendapatan as $i) { ?>
                                             <tr>
                                                 <td><?= $a++ ?></td>
                                                 <td><?= $i->sumber_dana ?></td>
@@ -133,7 +133,7 @@
     $(document).ready(function() {
 
         $('.tambah').click(function() {
-            var aksi = 'Tambah Kelas';
+            var aksi = 'Tambah Pendapatan';
             $.ajax({
                 url: '<?php echo base_url('/keuangan/tambah_dapat'); ?>',
                 method: 'post',
@@ -153,7 +153,7 @@
 
             var id = $(this).attr("data");
             $.ajax({
-                url: '<?php echo base_url(); ?>/kelas/ubah',
+                url: '<?php echo base_url(); ?>/keuangan/ubah_dapat',
                 method: 'post',
                 data: {
                     id: id
@@ -170,7 +170,7 @@
 
             var id = $(this).attr("data");
             $.ajax({
-                url: '<?php echo base_url(); ?>/kelas/hapus',
+                url: '<?php echo base_url(); ?>/keuangan/hapus_dapat',
                 method: 'post',
                 data: {
                     id: id
@@ -178,7 +178,7 @@
                 success: function(data) {
                     $('#myModal').modal("show");
                     $('#tampil_modal').html(data);
-                    document.getElementById("judul").innerHTML = 'Hapus Data';
+                    document.getElementById("judul").innerHTML = 'Hapus Data Pendapatan';
                 }
             });
         });

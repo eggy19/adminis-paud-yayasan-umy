@@ -74,6 +74,11 @@ class Auth extends CI_Controller
 
     public function blocked()
     {
+        //ambil data id user
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
+
+        $data['role'] = $user->role_id;
+
         $data['judul_halaman'] = 'Forbidden 403';
         $this->load->view('errors/403', $data);
     }

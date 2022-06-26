@@ -8,6 +8,13 @@
         <input type="text" class="form-control" name="nama_kelas" placeholder="Masukan Nama Kelas">
     </div>
     <div class="form-group">
+        <select name="" id="">
+            <option value="1">Administrator</option>
+            <option value="2">Sekolah</option>
+            <option value="3">Yayasan</option>
+        </select>
+    </div>
+    <div class="form-group">
         <label for="email">Password:</label>
         <input type="date" class="form-control" name="tmt">
     </div>

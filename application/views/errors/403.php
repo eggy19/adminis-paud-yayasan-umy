@@ -10,12 +10,18 @@
             <h2><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Access Forbidden</h2>
 
             <p>
-                We will work on fixing that right away.
-                Meanwhile, you may <a href="../../index.html">return to dashboard</a> or try using the search form.
+                Halaman yang anda kunjungi Tidak dapat diakses.
+                Sihlakan Kembali.
             </p>
 
             <h3>
-                <a href="#">Kembali ke Dashboard</a>
+                <a href="<?php
+                            if ($role == 1) {
+                                echo base_url('admin');
+                            } else {
+                                echo base_url('user/sekolah');
+                            }
+                            ?>">Kembali ke Dashboard</a>
             </h3>
 
         </div>

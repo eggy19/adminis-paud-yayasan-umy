@@ -47,7 +47,6 @@
                                             <th>No</th>
                                             <th>Program</th>
                                             <th>Kegiatan</th>
-                                            <th>Jumlah</th>
                                             <th>Waktu Kegiatan</th>
                                             <th>Jumlah</th>
                                             <th>Aksi</th>
@@ -59,7 +58,7 @@
                                         foreach ($penggunaan as $i) { ?>
                                             <tr>
                                                 <td><?= $a++ ?></td>
-                                                <td><?= $i->Program ?></td>
+                                                <td><?= $i->program ?></td>
                                                 <td><?= $i->kegiatan ?></td>
                                                 <td><?= $i->waktu_pelaksanaan ?></td>
                                                 <td><?= $i->jumlah ?></td>
@@ -156,7 +155,7 @@
 
             var id = $(this).attr("data");
             $.ajax({
-                url: '<?php echo base_url(); ?>/kelas/ubah',
+                url: '<?php echo base_url(); ?>/keuangan/ubah_keluar',
                 method: 'post',
                 data: {
                     id: id
@@ -164,7 +163,7 @@
                 success: function(data) {
                     $('#myModal').modal("show");
                     $('#tampil_modal').html(data);
-                    document.getElementById("judul").innerHTML = 'Ubah Data Pendapatan';
+                    document.getElementById("judul").innerHTML = 'Ubah Data Penggunaan';
                 }
             });
         });
@@ -173,7 +172,7 @@
 
             var id = $(this).attr("data");
             $.ajax({
-                url: '<?php echo base_url(); ?>/kelas/hapus',
+                url: '<?php echo base_url(); ?>/keuangan/hapus_keluar',
                 method: 'post',
                 data: {
                     id: id
@@ -181,7 +180,7 @@
                 success: function(data) {
                     $('#myModal').modal("show");
                     $('#tampil_modal').html(data);
-                    document.getElementById("judul").innerHTML = 'Hapus Data';
+                    document.getElementById("judul").innerHTML = 'Hapus Data Penggunaan';
                 }
             });
         });

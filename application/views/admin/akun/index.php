@@ -49,6 +49,15 @@
                                         <?= form_error('email', '<small class="text-danger pl-2">', '</small>'); ?>
                                     </div>
                                     <div class="form-group">
+                                        <label for="email">Role Akses:</label>
+
+                                        <select name="role" id="" class="form-control">
+                                            <option value="1">Administrator</option>
+                                            <option value="2">Sekolah</option>
+                                            <option value="3">Yayasan</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="email">Password:</label>
                                         <input type="password" class="form-control" name="password1" value="<?= set_value('password1') ?>">
                                         <?= form_error('password1', '<small class="text-danger pl-2">', '</small>'); ?>
@@ -95,8 +104,8 @@
                                                 <td><?= $i->role_id ?></td>
                                                 <td><?= date('d F Y', $i->created_at) ?></td>
                                                 <td class="project-actions text-center">
-                                                    <button class="hapus btn btn-danger btn-sm"><i class="fas fa-trash"> Hapus</i></button>
-                                                    <button class="ubah btn btn-warning btn-sm"><i class="fas fa-edit"> Edit </i></button>
+                                                    <button class="hapus btn btn-danger btn-sm" data="<?= $i->id ?>"><i class="fas fa-trash"> Hapus</i></button>
+                                                    <button class="ubah btn btn-warning btn-sm" <?= $i->id ?>><i class="fas fa-edit"> Edit </i></button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -203,12 +212,12 @@
 
         $('.hapus').click(function() {
 
-            var nim = $(this).attr("kode_kelas");
+            var id = $(this).attr("data");
             $.ajax({
-                url: '<?php echo base_url(); ?>/siswa/hapus',
+                url: '<?php echo base_url(); ?>admin/hapusAkun',
                 method: 'post',
                 data: {
-                    nim: nim
+                    id: id
                 },
                 success: function(data) {
                     $('#myModal').modal("show");

@@ -2,10 +2,10 @@
     <thead>
         <tr>
             <th>No</th>
-            <th>Nama Kehiatan</th>
+            <th>Nama Kegiatan</th>
             <th>Tanggal</th>
             <th>lokasi</th>
-            <th>sertifikat</th>
+            <th>Sertifikat</th>
             <th></th>
 
         </tr>
@@ -18,7 +18,7 @@
                 <td><?= $i->nama_kegiatan ?></td>
                 <td><?= $i->tanggal ?></td>
                 <td><?= $i->lokasi ?></td>
-                <td><?= $i->sertifikat ?></td>
+                <td><a href="<?= base_url('assets/sertifikat/prestasi/') . $i->sertifikat ?>" target="_blank"><?= $i->sertifikat ?></a></td>
                 <td class="project-actions text-center">
                     <button class="hapus btn btn-danger btn-sm" data="<?= $i->id ?>"><i class="fas fa-trash"> Hapus</i></button>
                 </td>
@@ -36,7 +36,7 @@
 
             var id = $(this).attr("data");
             $.ajax({
-                url: '<?php echo base_url(); ?>/admin/hapus',
+                url: '<?php echo base_url(); ?>/prestasi/hapus',
                 method: 'post',
                 data: {
                     id: id
@@ -44,7 +44,7 @@
                 success: function(data) {
                     $('#myModal').modal("show");
                     $('#tampil_modal').html(data);
-                    document.getElementById("judul").innerHTML = 'Hapus Data';
+                    document.getElementById("judul").innerHTML = 'Hapus Data Prestasi';
                 }
             });
         });
