@@ -29,7 +29,7 @@ class User extends CI_Controller
         $data['jml_siswa'] = $this->Beranda_model->jml_siswa($user_id);
         $data['jml_prestasi'] = $this->Beranda_model->jml_prestasi($user_id);
         $data['profil'] = $this->Beranda_model->get_profil($user_id);
-        $data['judul_halaman'] = 'Beranda';
+        $data['judul_halaman'] = 'Selamat Datang Di SIM Paud Yayasan Aisyiyah Banguntapan';
         $this->load->view('beranda/index', $data);
     }
 

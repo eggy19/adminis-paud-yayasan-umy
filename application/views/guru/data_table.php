@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        <div class="card">
+        <div class="card card-success">
             <div class="card-header">
                 <h3 class="card-title">Tabel Data Guru</h3>
             </div>
@@ -38,8 +38,9 @@
                                 <td><?= $i->nbm ?></td>
                                 <td><?= $i->foto ?></td>
                                 <td class="project-actions text-center">
-                                    <button class="hapus btn btn-danger btn-sm" data='<?= $i->id ?>'><i class="fas fa-trash"> Hapus</i></button>
-                                    <button class="ubah btn btn-warning btn-sm" data='<?= $i->id ?>'><i class="fas fa-edit"> Edit </i></button>
+                                    <a href="<?= base_url('guru/detail/') . $i->id ?>" class="btn btn-info btn-sm">Detail</a>
+                                    <button class="hapus btn btn-danger btn-sm" data='<?= $i->id ?>'><i class="fas fa-trash"></i>Hapus</button>
+                                    <button class="ubah btn btn-warning btn-sm" data='<?= $i->id ?>'><i class="fas fa-edit"> </i>Edit</button>
                                 </td>
                             </tr>
                         <?php  } ?>

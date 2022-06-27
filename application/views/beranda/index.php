@@ -42,13 +42,13 @@
 
                                 <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
-                                        <b>Kelas</b> <a class="float-right">1,322</a>
+                                        <b>Kelas</b> <a class="float-right"><?= $jml_kelas ?></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Guru</b> <a class="float-right">543</a>
+                                        <b>Guru</b> <a class="float-right"><?= $jml_guru ?></a>
                                     </li>
                                     <li class="list-group-item">
-                                        <b>Siswa</b> <a class="float-right">13,287</a>
+                                        <b>Siswa</b> <a class="float-right"><?= $jml_siswa ?></a>
                                     </li>
                                 </ul>
                             </div>

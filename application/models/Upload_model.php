@@ -16,7 +16,7 @@ class Upload_model extends CI_Model
     {
 
         $config['upload_path']          = './assets/berkas/';
-        $config['allowed_types']        = 'pdf|jpg|png|xls|docx';
+        $config['allowed_types']        = 'pdf|jpg|png|xls|docx|doc';
         $config['max_size']             = 6000;
 
         $this->load->library('upload', $config);
@@ -34,8 +34,8 @@ class Upload_model extends CI_Model
     public function uploadSertif()
     {
 
-        $config['upload_path']          = './assets/sertifikat/prestasi/';
-        $config['allowed_types']        = 'pdf|jpg|png|docx';
+        $config['upload_path']          = './assets/sertifikat/';
+        $config['allowed_types']        = 'pdf|jpg|png|docx|doc';
         $config['max_size']             = 6000;
 
         $this->load->library('upload', $config);
