@@ -50,16 +50,26 @@ class profil extends CI_Controller
 
         //cek ada foto atau tidak
         if ($cek_foto != null) {
-
-            unlink('./assets/img/logo_sekolah/' . $input_foto); //hapus foto sebelumnya
-            //alur dan validasi untuk upload
-            $this->load->model('upload_model');
-            $this->upload_model->uploadLogo();
-            if ($this->upload->do_upload('logo')) { //jika foto ada
-                $foto = $this->upload->data('file_name');
+            if (unlink('./assets/img/logo_sekolah/' . $input_foto)) {  //hapus foto sebelumnya
+                //alur dan validasi untuk upload
+                $this->load->model('upload_model');
+                $this->upload_model->uploadLogo();
+                if ($this->upload->do_upload('logo')) { //jika foto ada
+                    $foto = $this->upload->data('file_name');
+                } else {
+                    $error = array('error' => $this->upload->display_errors());
+                    echo json_encode($error);
+                }
             } else {
-                $error = array('error' => $this->upload->display_errors());
-                echo json_encode($error);
+                //alur dan validasi untuk upload
+                $this->load->model('upload_model');
+                $this->upload_model->uploadLogo();
+                if ($this->upload->do_upload('logo')) { //jika foto ada
+                    $foto = $this->upload->data('file_name');
+                } else {
+                    $error = array('error' => $this->upload->display_errors());
+                    echo json_encode($error);
+                }
             }
         } else {
             $foto = $input_foto;

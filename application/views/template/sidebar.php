@@ -43,7 +43,9 @@
                 </li>
                 <?php if ($this->session->userdata('role_id') == 2) { ?>
                     <li class="nav-header">SEKOLAH</li>
-                    <li class="nav-item">
+                    <li class="nav-item 
+                    <?= $this->uri->segment(1) == 'kelas' ? 'menu-open' : '' || $this->uri->segment(1) == 'guru' ? 'menu-open' : '' || $this->uri->segment(1) == 'siswa' ? 'menu-open' : '' ?> 
+                    ">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
@@ -53,19 +55,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?= base_url('kelas') ?>" class="nav-link">
+                                <a href="<?= base_url('kelas') ?>" class="nav-link <?= $this->uri->segment(1) == 'kelas' ? 'active' : '' ?>">
                                     <i class="text-warning far fa-circle nav-icon"></i>
                                     <p>Data Kelas</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url('siswa') ?>" class="nav-link">
+                                <a href="<?= base_url('siswa') ?>" class="nav-link <?= $this->uri->segment(1) == 'siswa' ? 'active' : '' ?>">
                                     <i class="text-warning far fa-circle nav-icon"></i>
                                     <p>Data Siswa</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="<?= base_url('guru') ?>" class="nav-link">
+                                <a href="<?= base_url('guru') ?>" class="nav-link <?= $this->uri->segment(1) == 'guru' ? 'active' : '' ?>">
                                     <i class="text-warning far fa-circle nav-icon"></i>
                                     <p>Data Guru</p>
                                 </a>
@@ -136,6 +138,39 @@
                             <p>Download</p>
                         </a>
                     </li>
+                    <li class="nav-header">Laporan</li>
+                    <li class="nav-item">
+                        <a href="<?= base_url('siswa/laporan') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>Siswa</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url('kelas/laporan') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>Kelas</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url('guru/laporan') ?>" class="nav-link">
+                            <i class="nav-icon fa fa-chalkboard"></i>
+                            <p>Guru</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url('pen/laporan') ?>" class="nav-link">
+                            <i class="nav-icon fa fa-arrow-up"></i>
+                            <p>Pendapatan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url('siswa/laporan') ?>" class="nav-link">
+                            <i class="nav-icon fa fa-arrow-down"></i>
+                            <p>Penggunaan</p>
+                        </a>
+                    </li>
+
+
                 <?php } elseif ($this->session->userdata('role_id') == 1) { ?>
                     <li class="nav-header">ADMINISTRATOR</li>
                     <li class="nav-item">
@@ -197,110 +232,6 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>
-                            Standar Proses
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Rencana Pembelajaran</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Supervisi Pembelajaran</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>
-                            Standar Pengelolaan
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Perencanaan Satuaan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Pengorganisasian</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Pelaksanaan</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>
-                            Standar Pengelolaan
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Perencanaan Satuaan</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Pengorganisasian</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Pelaksanaan</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-table"></i>
-                        <p>
-                            Pembiayaan
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Rencana Anggaran</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Administrasi Keuangan</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li> -->
                     <li class="nav-header">GRAFIK</li>
                     <li class="nav-item">
                         <a href="iframe.html" class="nav-link">

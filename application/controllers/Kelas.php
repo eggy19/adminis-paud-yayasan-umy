@@ -103,4 +103,14 @@ class Kelas extends CI_Controller
         </div>');
         redirect('kelas');
     }
+
+    public function laporan()
+    {
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
+        $user_id = $user->id;
+
+        $data['kelas'] = $this->db->get_where('kelas', ['user_id' => $user_id])->result();
+        $data['judul_halaman'] = 'Data Kelas';
+        $this->load->view('kelas/laporan', $data);
+    }
 }

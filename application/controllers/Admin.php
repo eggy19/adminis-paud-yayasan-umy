@@ -8,6 +8,7 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->library('form_validation');
+        $this->load->model('Beranda_model');
         is_logged_in(); //dari helper
         role_id_1(); //daru helper
     }
@@ -16,8 +17,9 @@ class Admin extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        $data['judul_halaman'] = 'Tambah Artikel';
-        $this->load->view('artikel/tambah', $data);
+        $data['sekolah'] = $this->Beranda_model->get_allSekolah();
+        $data['judul_halaman'] = 'Data Paud';
+        $this->load->view('beranda/admin', $data);
     }
 
     public function akun()

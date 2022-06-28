@@ -134,6 +134,16 @@ class Siswa extends CI_Controller
         }
     }
 
+    public function laporan()
+    {
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
+        $user_id = $user->id;
+
+        $data['siswa'] = $this->db->get_where('siswa', ['user_id' => $user_id])->result();
+        $data['judul_halaman'] = 'Data Siswa';
+        $this->load->view('siswa/laporan', $data);
+    }
+
     private function validasi()
     {
 

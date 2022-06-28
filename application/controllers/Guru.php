@@ -264,4 +264,15 @@ class Guru extends CI_Controller
             redirect('guru/detail/' . $file->guru_id);
         }
     }
+
+    public function laporan()
+    {
+        //ambil data id user
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
+        $user_id = $user->id;
+
+        $data['judul_halaman'] = 'Laporan Data Guru';
+        $data['guru'] = $this->db->get_where('guru', ['user_id' => $user_id])->result();
+        $this->load->view('guru/laporan', $data);
+    }
 }

@@ -49,4 +49,22 @@ class Beranda_model extends CI_Model
             return 0;
         }
     }
+
+    // Admin / Yayasan
+    public function get_allSekolah()
+    {
+        $query = $this->db->query('SELECT profil_sekolah.nama_sekolah AS Sekolah,
+        profil_sekolah.alamat, 
+        COUNT(DISTINCT guru.id) AS Jumlah_Guru, 
+        COUNT(DISTINCT siswa.id) AS Jumlah_Siswa, 
+        COUNT(DISTINCT kelas.id) AS Jumlah_Kelas 
+        FROM user 
+        JOIN profil_sekolah ON user.id = profil_sekolah.user_id 
+        LEFT JOIN guru ON user.id = guru.user_id 
+        LEFT JOIN siswa ON user.id = siswa.user_id
+        LEFT JOIN kelas ON user.id = kelas.user_id
+        GROUP BY user.id');
+
+        return $query->result();
+    }
 }

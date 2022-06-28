@@ -37,17 +37,15 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <button type="button" class="tambah btn btn-primary mb-3" id="tambah-siswa" data-toggle="modal" data-target="#myModal">
-                                    Tambah Data
-                                </button>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
 
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Kelas</th>
-                                            <th>Wali Kelas</th>
-                                            <th>Aksi</th>
+                                            <th>Wali Kelas 1</th>
+                                            <th>Wali Kelas 2</th>
+
 
                                         </tr>
                                     </thead>
@@ -57,11 +55,8 @@
                                             <tr>
                                                 <td><?= $a++ ?></td>
                                                 <td><?= $i->kelas ?></td>
-                                                <td><?= $i->wali_kelas1 . ', <br>' . $i->wali_kelas2  ?></td>
-                                                <td class="project-actions text-center">
-                                                    <button class="hapus btn btn-danger btn-sm" data='<?= $i->id ?>'><i class="fas fa-trash"> Hapus</i></button>
-                                                    <button class="ubah btn btn-warning btn-sm" data='<?= $i->id ?>'><i class="fas fa-edit"> Edit </i></button>
-                                                </td>
+                                                <td><?= $i->wali_kelas1 ?></td>
+                                                <td><?= $i->wali_kelas2 ?></td>
                                             </tr>
                                         <?php } ?>
                                         </tfoot>
@@ -104,6 +99,8 @@
         </div>
     </div>
 
+
+
     <!-- Footer -->
     <?php $this->load->view('template/footer'); ?>
 
@@ -114,67 +111,25 @@
 <!-- DataTables  & Plugins -->
 <script src="<?php echo base_url('assets/templates/plugins') ?>/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/jszip/jszip.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/pdfmake/pdfmake.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/pdfmake/vfs_fonts.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <script>
     $(document).ready(function() {
-
-        $('.tambah').click(function() {
-            var aksi = 'Tambah Kelas';
-            $.ajax({
-                url: '<?php echo base_url('/kelas/tambah'); ?>',
-                method: 'post',
-                data: {
-                    aksi: aksi
-                },
-                success: function(data) {
-                    $('#myModal').modal("show");
-                    $('#tampil_modal').html(data);
-                    document.getElementById("judul").innerHTML = 'Tambah Data Kelas';
-
-                }
-            });
-        });
-
-        $('.ubah').click(function() {
-
-            var id = $(this).attr("data");
-            $.ajax({
-                url: '<?php echo base_url(); ?>/kelas/ubah',
-                method: 'post',
-                data: {
-                    id: id
-                },
-                success: function(data) {
-                    $('#myModal').modal("show");
-                    $('#tampil_modal').html(data);
-                    document.getElementById("judul").innerHTML = 'Edit Data';
-                }
-            });
-        });
-
-        $('.hapus').click(function() {
-
-            var id = $(this).attr("data");
-            $.ajax({
-                url: '<?php echo base_url(); ?>/kelas/hapus',
-                method: 'post',
-                data: {
-                    id: id
-                },
-                success: function(data) {
-                    $('#myModal').modal("show");
-                    $('#tampil_modal').html(data);
-                    document.getElementById("judul").innerHTML = 'Hapus Data';
-                }
-            });
-        });
-
-
         $("#example1").DataTable({
             "responsive": true,
             "lengthChange": false,
-            "autoWidth": false
-        });
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
 </script>
 
