@@ -244,7 +244,6 @@ class Guru extends CI_Controller
             redirect('guru/detail/' . $guru_id);
         } else {
 
-            $error = array('error' => $this->upload->display_errors());
             $this->session->set_flashdata('msg', ' <label class="text text-danger"><b>' . $this->upload->display_errors() . '</b></label>');
             redirect('guru/detail/' . $guru_id);
         }

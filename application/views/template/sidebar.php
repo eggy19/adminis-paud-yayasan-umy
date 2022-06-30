@@ -191,19 +191,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
+                                <a href="<?= base_url('laporan/kelas') ?>" class="nav-link">
                                     <i class="text-success far fa-circle nav-icon"></i>
-                                    <p>Sekolah</p>
+                                    <p>Kelas</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/simple.html" class="nav-link">
+                                <a href="<?= base_url('laporan/siswa') ?>" class="nav-link">
                                     <i class="text-success far fa-circle nav-icon"></i>
                                     <p>Siswa</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
+                                <a href="<?= base_url('laporan/guru') ?>" class="nav-link">
                                     <i class="text-success far fa-circle nav-icon"></i>
                                     <p>Guru</p>
                                 </a>
@@ -220,13 +220,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/tables/simple.html" class="nav-link">
+                                <a href="<?= base_url('laporan/pendapatan') ?>" class="nav-link">
                                     <i class="text-success far fa-circle nav-icon"></i>
                                     <p>Pendapatan</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
+                                <a href="<?= base_url('laporan/penggunaan') ?>" class="nav-link">
                                     <i class="text-success far fa-circle nav-icon"></i>
                                     <p>Penggunaan</p>
                                 </a>

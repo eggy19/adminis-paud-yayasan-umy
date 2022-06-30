@@ -21,7 +21,6 @@
                     <div class="col-sm-6">
                         <h1><?php echo $judul_halaman ?></h1>
                     </div>
-                    <?= $this->session->flashdata('msg'); ?>
                 </div>
             </div><!-- /.container-fluid -->
         </section>
@@ -29,6 +28,8 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                <?= $this->session->flashdata('msg'); ?>
+
                 <div class="row">
                     <div class="col-md-5">
                         <div class="card card-success">
@@ -46,6 +47,7 @@
                                 <div class="form-group">
                                     <label for="email">Pilih File:</label>
                                     <input type="file" class="form-control" name="uploadfile" required>
+                                    <small class="text text-danger">*maksimal file 5Mb</small>
                                 </div>
                             </div>
                             <!-- /.card-body -->

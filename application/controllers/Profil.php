@@ -57,8 +57,13 @@ class profil extends CI_Controller
                 if ($this->upload->do_upload('logo')) { //jika foto ada
                     $foto = $this->upload->data('file_name');
                 } else {
-                    $error = array('error' => $this->upload->display_errors());
-                    echo json_encode($error);
+                    $this->session->set_flashdata('msg', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>' .  $this->upload->display_errors() . '</strong> Gagal Upload File !.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>');
+                    redirect('profil/ubah');
                 }
             } else {
                 //alur dan validasi untuk upload
@@ -67,8 +72,13 @@ class profil extends CI_Controller
                 if ($this->upload->do_upload('logo')) { //jika foto ada
                     $foto = $this->upload->data('file_name');
                 } else {
-                    $error = array('error' => $this->upload->display_errors());
-                    echo json_encode($error);
+                    $this->session->set_flashdata('msg', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>' .  $this->upload->display_errors() . '</strong> Gagal Upload File !.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>');
+                    redirect('profil/ubah');
                 }
             }
         } else {

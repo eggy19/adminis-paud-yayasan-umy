@@ -28,6 +28,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                <?= $this->session->flashdata('msg'); ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-success">
@@ -58,7 +59,7 @@
                                                         </div>
 
                                                     </div>
-                                                    <small>*pilih jika ingin ganti logo</small>
+                                                    <small class="text text-danger">*pilih jika ingin ganti logo, maksimal 2Mb</small>
                                                 </div>
                                                 <div class="form-group mt-4">
                                                     <button type="submit" class="btn btn-primary form-control">Update Profil</button>

@@ -23,6 +23,7 @@
                 <span class="input-group-text">Upload</span>
             </div>
         </div>
+        <small class="text text-danger">*maksimal 4Mb</small>
     </div>
     <button id="tombol_tambah" type="submit" class="btn btn-primary mt-3">Simpan</button>
 </form>

@@ -31,7 +31,7 @@
     </div>
     <div class="form-group">
         <label for="email">No Telepon:</label>
-        <input type="text" class="form-control" name="no_hp">
+        <input type="number" class="form-control" pattern="\d*" name="no_hp" maxlength="14">
     </div>
     </div>
     <div class="form-group">
