@@ -23,20 +23,51 @@ class Siswa extends CI_Controller
         $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
         $user_id = $user->id;
 
-        $data['siswa'] = $this->db->get_where('siswa', ['user_id' => $user_id])->result();
+        $query = "SELECT siswa.id, siswa.nomor_induk, siswa.nama, siswa.gender, siswa.t_lahir, siswa.tgl_lahir, siswa.bb, siswa.tb, siswa.lk, kelas.kelas from siswa JOIN kelas on siswa.id_kelas = kelas.id WHERE kelas.user_id='" . $user_id . "'";
+        $data['siswa'] = $this->db->query($query)->result();
         $this->load->view('siswa/data_tabel', $data);
     }
 
     public function tambah()
     {
-        $this->load->view('siswa/tambah');
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
+        $user_id = $user->id;
+
+        $data['kelas'] = $this->db->get_where('kelas', ['user_id' => $user_id])->result();
+        $this->load->view('siswa/tambah', $data);
     }
 
     public function ubah()
     {
-        //ambil id_guru dari post ajax
+        //ambil id_siswa dari post ajax
         $id = $this->input->post('id');
-        $data['siswa'] = $this->db->get_where('siswa', array('id' => $id))->row();
+        $query = "SELECT 
+        siswa.id AS id_siswa,
+        siswa.user_id,
+        siswa.nomor_induk,
+        siswa.nama,
+        siswa.gender,
+        siswa.t_lahir,
+        siswa.tgl_lahir,
+        siswa.id_kelas,
+        siswa.bb,
+        siswa.tb,
+        siswa.lk,
+        siswa.ortu,
+        siswa.alamat,
+        siswa.no_hp,
+        kelas.kelas,
+        kelas.id AS id_kelas
+        FROM siswa JOIN kelas on siswa.id_kelas = kelas.id WHERE siswa.id = '" . $id . "'";
+
+        $data['siswa'] = $this->db->query($query)->row();
+
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
+        $user_id = $user->id;
+
+        $data['kelas'] = $this->db->get_where('kelas', ['user_id' => $user_id])->result();
+
+        // var_dump($data['siswa']);
         $this->load->view('siswa/ubah', $data);
     }
 
@@ -78,6 +109,7 @@ class Siswa extends CI_Controller
                 'gender' => $this->input->post('gender'),
                 't_lahir' => $this->input->post('t_lahir'),
                 'tgl_lahir' => $this->input->post('tgl_lahir'),
+                'id_kelas' => $this->input->post('kelas'),
                 'bb' => $this->input->post('berat'),
                 'tb' => $this->input->post('tinggi'),
                 'lk' => $this->input->post('lingkar'),
@@ -117,6 +149,7 @@ class Siswa extends CI_Controller
                 'gender' => $this->input->post('gender'),
                 't_lahir' => $this->input->post('t_lahir'),
                 'tgl_lahir' => $this->input->post('tgl_lahir'),
+                'id_kelas' => $this->input->post('kelas'),
                 'bb' => $this->input->post('berat'),
                 'tb' => $this->input->post('tinggi'),
                 'lk' => $this->input->post('lingkar'),

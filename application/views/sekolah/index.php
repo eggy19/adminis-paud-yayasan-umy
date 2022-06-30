@@ -19,7 +19,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1><?php echo $judul_halaman ?></h1>
+                        <h1><?= $profil->nama_sekolah ?></h1>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -103,14 +103,13 @@
                                 <!-- small box -->
                                 <div class="small-box bg-info">
                                     <div class="inner">
+                                        <p>Jumlah Kelas</p>
                                         <h3><?= $jml_kelas ?></h3>
 
-                                        <p>Kelas</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-university"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">Info Lengkap<i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
 
                             </div>
@@ -119,14 +118,13 @@
                                 <!-- small box -->
                                 <div class="small-box bg-success">
                                     <div class="inner">
-                                        <h3><?= $jml_guru ?></h3>
 
-                                        <p>Guru</p>
+                                        <p>Jumlah Guru</p>
+                                        <h3><?= $jml_guru ?></h3>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-person-stalker"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">Info Lengkap <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                             <!-- ./col -->
@@ -134,14 +132,13 @@
                                 <!-- small box -->
                                 <div class="small-box bg-warning">
                                     <div class="inner">
-                                        <h3><?= $jml_siswa ?></h3>
 
-                                        <p>Siswa</p>
+                                        <p>Jumlah Siswa</p>
+                                        <h3><?= $jml_siswa ?></h3>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-person-add"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">Info Lengkap <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                             <!-- ./col -->
@@ -156,37 +153,36 @@
                                     <div class="icon">
                                         <i class="ion ion-pie-graph"></i>
                                     </div>
-                                    <a href="#" class="small-box-footer">Info Lengkap <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                             <!-- ./col -->
 
+                            <div class="col">
+                                <!-- PIE CHART -->
+                                <div class="card card-success">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Peserta Didik/Siswa</h3>
+
+                                        <div class="card-tools">
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <canvas id="pieChartSiswa" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                            </div>
                         </div>
                         <!-- /.row -->
-                        <div class="col">
-                            <!-- PIE CHART -->
-                            <div class="card card-success">
-                                <div class="card-header">
-                                    <h3 class="card-title">Peserta Didik/Siswa</h3>
-
-                                    <div class="card-tools">
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                        </div>
                         <div class="col">
                             <!-- STACKED BAR CHART -->
                             <div class="card card-success">
                                 <div class="card-header">
-                                    <h3 class="card-title">Siswa Per Kelas</h3>
+                                    <h3 class="card-title">Jumlah Siswa Per Kelas</h3>
 
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -215,29 +211,6 @@
         <!-- /.content -->
     </div>
 
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title" id="judul"></h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div id="tampil_modal">
-                        <!-- Data akan di tampilkan disini-->
-                    </div>
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 
 
@@ -251,7 +224,7 @@
 <script>
     $(document).ready(function() {
         // chart Pie
-        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+        var pieChartCanvas = $('#pieChartSiswa').get(0).getContext('2d')
         var pieData = {
             labels: [
                 'Laki-laki',
@@ -272,60 +245,20 @@
             data: pieData,
             options: pieOptions
         });
+
         //=========================================================
 
         var barChart = $('#barChart').get(0).getContext('2d');
-
-        const data = {
-            labels: [
-                <?php
-                foreach ($kelas as $i) {
-                    echo "'" . $i->kelas . "',";
-                }
-
-                ?>
-            ],
-            datasets: [{
-                label: 'Siswa',
-                data: [<?php
-                        foreach ($kelas as $i) {
-                            echo "'" . $i->jml_siswa . "',";
-                        }
-
-                        ?>],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 205, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(201, 203, 207, 0.2)'
-                ],
-                borderColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(255, 159, 64)',
-                    'rgb(255, 205, 86)',
-                    'rgb(75, 192, 192)',
-                    'rgb(54, 162, 235)',
-                    'rgb(153, 102, 255)',
-                    'rgb(201, 203, 207)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-
+        var isiData = {
+            label: 'Density of Planets (kg/m3)',
+            data: [5427, 5243, 5514, 3933, 1326, 687, 1271, 1638]
+        }
         new Chart(barChart, {
             type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            },
+            data: {
+                labels: ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
+                datasets: [isiData]
+            }
         })
     });
 </script>

@@ -6,7 +6,7 @@
             <th>Nama Siswa</th>
             <th>Gender</th>
             <th>Tgl Lahir</th>
-            <th>Usia</th>
+            <th>Kelas</th>
             <th>Berat Badan (Kg)</th>
             <th>Tinggi Badan (cm)</th>
             <th>Lingkar Kepala (cm)</th>
@@ -23,7 +23,7 @@
                 <td><?= $i->nama ?></td>
                 <td><?= $i->gender ?></td>
                 <td><?= $i->t_lahir . ', ' . $i->tgl_lahir ?></td>
-                <td>usia</td>
+                <td><?= $i->kelas ?></td>
                 <td><?= $i->bb ?></td>
                 <td><?= $i->tb ?></td>
                 <td><?= $i->lk ?></td>

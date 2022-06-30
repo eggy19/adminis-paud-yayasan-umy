@@ -5,10 +5,7 @@
                 <label for="email">Nomor Induk:</label>
                 <input type="text" class="form-control" name="induk" placeholder="Masukan Kode Kelas">
             </div>
-            <div class="form-group">
-                <label for="email">Nama Siswa:</label>
-                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kelas">
-            </div>
+
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Jenis Kelamin</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="gender">
@@ -17,35 +14,53 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="email">Tempat Lahir:</label>
-                <input type="text" class="form-control" name="t_lahir" placeholder="Masukan Nama Kelas">
-            </div>
-            <div class="form-group">
                 <label for="email">Tanggal Lahir:</label>
                 <input type="date" class="form-control" name="tgl_lahir">
             </div>
+            <hr>
             <div class="form-group">
                 <label for="email">Berat Badan (Kg):</label>
                 <input type="number" class="form-control" name="berat" placeholder="Masukan Angka">
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                <label for="email">Tinggi Badan (cm):</label>
-                <input type="number" class="form-control" name="tinggi" placeholder="Masukan Angka">
             </div>
             <div class="form-group">
                 <label for="email">Lingkar Kepala (cm):</label>
                 <input type="number" class="form-control" name="lingkar" placeholder="Masukan Angka">
             </div>
+            <hr>
             <div class="form-group">
                 <label for="email">Nama Orang Tua:</label>
                 <input type="text" class="form-control" name="ortu" placeholder="Masukan Nama Orang tua">
             </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="email">Nama Siswa:</label>
+                <input type="text" class="form-control" name="nama" placeholder="Masukan Nama Kelas">
+            </div>
+            <div class="form-group">
+                <label for="email">Tempat Lahir:</label>
+                <input type="text" class="form-control" name="t_lahir" placeholder="Masukan Nama Kelas">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Kelas</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="kelas">
+                    <option value="">Pilih Kelas</option>
+                    <?php foreach ($kelas as $i) { ?>
+                        <option value="<?= $i->id ?>"><?= $i->kelas ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="email">Tinggi Badan (cm):</label>
+                <input type="number" class="form-control" name="tinggi" placeholder="Masukan Angka">
+            </div>
+
             <div class="form-group">
                 <label for="email">Alamat:</label>
                 <input type="text" class="form-control" name="alamat" placeholder="Masukan alamat">
             </div>
+            <hr>
             <div class="form-group">
                 <label for="email">No Telepon:</label>
                 <input type="text" class="form-control" name="no_hp" placeholder="Masukan no telpon">

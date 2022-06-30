@@ -108,6 +108,18 @@ class Keuangan extends CI_Controller
         redirect('keuangan/pendapatan/');
     }
 
+    public function laporanDapat()
+    {
+        //ambil id user
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
+        $id_user = $user->id;
+        // ambil data by id
+        $data['rencana_pendapatan'] = $this->db->get_where('rencana_pendapatan', ['user_id' => $id_user])->result();
+
+        $data['judul_halaman'] = 'Laporan Pendapatan Sekolah';
+        $this->load->view('keuangan/pendapatan/laporan', $data);
+    }
+
     //pengeluaran
     public function pengeluaran()
     {
@@ -206,5 +218,17 @@ class Keuangan extends CI_Controller
             </button>
         </div>');
         redirect('keuangan/pengeluaran/');
+    }
+
+    public function laporanKeluar()
+    {
+        //ambil id user
+        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
+        $id_user = $user->id;
+        // ambil data by id
+        $data['penggunaan'] = $this->db->get_where('rencana_penggunaan', ['user_id' => $id_user])->result();
+
+        $data['judul_halaman'] = 'Pengeluaran Sekolah';
+        $this->load->view('keuangan/pengeluaran/laporan', $data);
     }
 }

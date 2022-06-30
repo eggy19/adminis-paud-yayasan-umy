@@ -3,7 +3,7 @@
         <div class="col">
             <div class="form-group">
                 <label for="email">Nomor Induk:</label>
-                <input type="hidden" name="id" value="<?= $siswa->id ?>">
+                <input type="hidden" name="id" value="<?= $siswa->id_siswa ?>">
                 <input type="hidden" name="user_id" value="<?= $siswa->user_id ?>">
                 <input type="text" class="form-control" name="induk" value="<?= $siswa->nomor_induk ?>">
             </div>
@@ -14,7 +14,6 @@
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Jenis Kelamin</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="gender">
-
                     <option value="<?= $siswa->gender ?>" selected><?= $siswa->gender ?></option>
                     <option>Laki-Laki</option>
                     <option>Perempuan</option>
@@ -29,11 +28,21 @@
                 <input type="date" class="form-control" name="tgl_lahir" value="<?= $siswa->tgl_lahir ?>">
             </div>
             <div class="form-group">
-                <label for="email">Berat Badan (Kg):</label>
-                <input type="number" class="form-control" name="berat" value="<?= $siswa->bb ?>">
+                <label for="exampleFormControlSelect1">Kelas :</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="kelas">
+                    <option value="<?= $siswa->id_kelas ?>" selected><?= $siswa->kelas ?></option>
+                    <?php foreach ($kelas as $i) { ?>
+                        <option value="<?= $i->id ?>"><?= $i->kelas ?></option>
+                    <?php } ?>
+                </select>
             </div>
         </div>
         <div class="col">
+
+            <div class="form-group">
+                <label for="email">Berat Badan (Kg):</label>
+                <input type="number" class="form-control" name="berat" value="<?= $siswa->bb ?>">
+            </div>
             <div class="form-group">
                 <label for="email">Tinggi Badan (cm):</label>
                 <input type="number" class="form-control" name="tinggi" value="<?= $siswa->tb ?>">

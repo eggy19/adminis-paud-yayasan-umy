@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/templates/plugins') ?>/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo base_url('assets/templates/plugins') ?>/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- JQVMap -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/templates/plugins') ?>/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url('assets/templates/dist') ?>/css/adminlte.min.css">
     <!-- overlayScrollbars -->

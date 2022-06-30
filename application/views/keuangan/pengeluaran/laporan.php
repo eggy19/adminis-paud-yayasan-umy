@@ -17,50 +17,50 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1><?php echo $judul_halaman ?></h1>
+                    </div>
+                </div>
             </div><!-- /.container-fluid -->
         </section>
 
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                <?= $this->session->flashdata('msg'); ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Tabel Data Paud</h3>
+                                <h3 class="card-title">Tabel Rencana Penggunaan</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
 
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
+
                                         <tr>
                                             <th>No</th>
-                                            <th>Sekolah</th>
-                                            <th>Alamat</th>
-                                            <th>Email Akun</th>
-                                            <th>Guru</th>
-                                            <th>Peserta Didik</th>
-                                            <th>Kelas</th>
+                                            <th>Program</th>
+                                            <th>Kegiatan</th>
+                                            <th>Waktu Kegiatan</th>
+                                            <th>Jumlah</th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $a = 1;
-                                        foreach ($sekolah as $i) { ?>
+                                        foreach ($penggunaan as $i) { ?>
                                             <tr>
                                                 <td><?= $a++ ?></td>
-                                                <td><a href="<?= base_url('sekolah/dt/' . $i->id) ?>"> <?= $i->Sekolah ?></a>
-                                                </td>
-                                                <td><?= $i->alamat ?></td>
-                                                <td><?= $i->email ?></td>
-                                                <td><?= $i->Jumlah_Guru ?></td>
-                                                <td><?= $i->Jumlah_Siswa ?></td>
-                                                <td><?= $i->Jumlah_Kelas ?></td>
+                                                <td><?= $i->program ?></td>
+                                                <td><?= $i->kegiatan ?></td>
+                                                <td><?= $i->waktu_pelaksanaan ?></td>
+                                                <td><?= $i->jumlah ?></td>
                                             </tr>
-                                        <?php  } ?>
-
+                                        <?php } ?>
                                         </tfoot>
                                 </table>
                             </div>
@@ -77,6 +77,7 @@
         <!-- /.content -->
     </div>
 
+
     <!-- Footer -->
     <?php $this->load->view('template/footer'); ?>
 
@@ -84,22 +85,34 @@
 <!-- ./wrapper -->
 <!-- JS -->
 <?php $this->load->view('template/js'); ?>
-
 <!-- DataTables  & Plugins -->
 <script src="<?php echo base_url('assets/templates/plugins') ?>/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/jszip/jszip.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/pdfmake/pdfmake.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/pdfmake/vfs_fonts.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.colVis.min.js"></script>
+
 <script>
-    $(function() {
+    $(document).ready(function() {
+
+
         $("#example1").DataTable({
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "buttons": ["copy", "csv", "excel", "pdf", "print"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
+            "searching": false,
             "ordering": true,
             "info": true,
             "autoWidth": false,
@@ -107,7 +120,6 @@
         });
     });
 </script>
-
 
 </body>
 

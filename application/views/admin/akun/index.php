@@ -101,11 +101,10 @@
                                                 <td><?= $n++ ?></td>
                                                 <td><?= $i->nama ?></td>
                                                 <td><?= $i->email ?></td>
-                                                <td><?= $i->role_id ?></td>
+                                                <td><?= $i->role ?></td>
                                                 <td><?= date('d F Y', $i->created_at) ?></td>
                                                 <td class="project-actions text-center">
                                                     <button class="hapus btn btn-danger btn-sm" data="<?= $i->id ?>"><i class="fas fa-trash"> Hapus</i></button>
-                                                    <button class="ubah btn btn-warning btn-sm" <?= $i->id ?>><i class="fas fa-edit"> Edit </i></button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

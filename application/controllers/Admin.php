@@ -36,7 +36,8 @@ class Admin extends CI_Controller
 
 
         if ($this->form_validation->run() == false) {
-            $data['user'] = $this->db->get('user')->result_object();
+            $query = 'SELECT role_id.role, user.id, user.nama, user.email, user.created_at FROM role_id JOIN user on role_id.id = user.role_id';
+            $data['user'] = $this->db->query($query)->result_object();
 
             $data['judul_halaman'] = 'Akun Pengguna';
             $this->load->view('admin/akun/index', $data);
@@ -96,6 +97,9 @@ class Admin extends CI_Controller
         redirect('admin/akun');
     }
 
+
+
+    //====================================================================
     //Halaman Upload File
     public function uploadfile()
     {
@@ -103,7 +107,6 @@ class Admin extends CI_Controller
         $data['judul_halaman'] = 'Upload File';
         $this->load->view('admin/upload/index', $data);
     }
-
 
 
     public function simpan_upload()

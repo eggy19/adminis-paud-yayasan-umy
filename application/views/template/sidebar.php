@@ -10,10 +10,7 @@
         <!-- Sidebar user panel (optional) -->
         <?php if ($this->session->userdata('role_id') != 1) { ?>
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="<?php echo base_url('assets/templates/dist') ?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
+                <div class="info ml-3">
                     <a href="#" class="d-block">Administrator Sekolah</a>
                 </div>
             </div>
@@ -43,9 +40,7 @@
                 </li>
                 <?php if ($this->session->userdata('role_id') == 2) { ?>
                     <li class="nav-header">SEKOLAH</li>
-                    <li class="nav-item 
-                    <?= $this->uri->segment(1) == 'kelas' ? 'menu-open' : '' || $this->uri->segment(1) == 'guru' ? 'menu-open' : '' || $this->uri->segment(1) == 'siswa' ? 'menu-open' : '' ?> 
-                    ">
+                    <li class="nav-item                     ">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
@@ -158,13 +153,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url('pen/laporan') ?>" class="nav-link">
+                        <a href="<?= base_url('keuangan/laporandapat') ?>" class="nav-link">
                             <i class="nav-icon fa fa-arrow-up"></i>
                             <p>Pendapatan</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url('siswa/laporan') ?>" class="nav-link">
+                        <a href="<?= base_url('keuangan/laporankeluar') ?>" class="nav-link">
                             <i class="nav-icon fa fa-arrow-down"></i>
                             <p>Penggunaan</p>
                         </a>
@@ -196,6 +191,12 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="text-success far fa-circle nav-icon"></i>
+                                    <p>Sekolah</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="pages/tables/simple.html" class="nav-link">
                                     <i class="text-success far fa-circle nav-icon"></i>
                                     <p>Siswa</p>
@@ -221,29 +222,16 @@
                             <li class="nav-item">
                                 <a href="pages/tables/simple.html" class="nav-link">
                                     <i class="text-success far fa-circle nav-icon"></i>
-                                    <p>Siswa</p>
+                                    <p>Pendapatan</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="pages/tables/data.html" class="nav-link">
                                     <i class="text-success far fa-circle nav-icon"></i>
-                                    <p>Guru</p>
+                                    <p>Penggunaan</p>
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-header">GRAFIK</li>
-                    <li class="nav-item">
-                        <a href="iframe.html" class="nav-link">
-                            <i class="nav-icon fas fa-ellipsis-h"></i>
-                            <p>Tabbed IFrame Plugin</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                            <i class="nav-icon fas fa-file"></i>
-                            <p>Documentation</p>
-                        </a>
                     </li>
                 <?php } ?>
             </ul>

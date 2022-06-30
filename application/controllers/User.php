@@ -24,6 +24,9 @@ class User extends CI_Controller
         $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_object();
         $user_id = $user->id;
 
+        $data['lk'] = $this->Beranda_model->jml_lk_siswa($user_id);
+        $data['pr'] = $this->Beranda_model->jml_pr_siswa($user_id);
+        $data['kelas'] = $this->Beranda_model->get_kelas($user_id);
         $data['jml_kelas'] = $this->Beranda_model->jml_kelas($user_id);
         $data['jml_guru'] = $this->Beranda_model->jml_guru($user_id);
         $data['jml_siswa'] = $this->Beranda_model->jml_siswa($user_id);
