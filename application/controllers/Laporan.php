@@ -21,7 +21,17 @@ class Laporan extends CI_Controller
     {
         $data['judul_halaman'] = 'Laporan Data Guru';
         $data['guru'] = $this->db->get_where('guru', ['user_id' => $id_sekolah])->result();
-        $this->load->view('guru/laporan', $data);
+        $this->load->view('sekolah/guru_laporan', $data);
+    }
+
+    public function guru_detail($Guru_id)
+    {
+        $data['judul_halaman'] = "Detail Guru";
+        $data['diklat'] = $this->db->get_where('pengalaman_diklat', ['guru_id' => $Guru_id])->result();
+        $data['organis'] = $this->db->get_where('pengalaman_organisasi', ['guru_id' => $Guru_id])->result();
+        $data['guru'] = $this->db->get_where('guru', ['id' => $Guru_id])->row();
+        // var_dump($data['diklat']);
+        $this->load->view('sekolah/guru_detail', $data);
     }
 
     public function kelas()

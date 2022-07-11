@@ -8,6 +8,7 @@ class Albums extends CI_Controller
     {
         parent::__construct();
         is_logged_in();
+        role_id_2();
     }
 
     public function index()
@@ -51,5 +52,11 @@ class Albums extends CI_Controller
             $error = array('error' => $this->upload->display_errors());
             echo $error;
         }
+    }
+    public function hapus($id, $gambar)
+    {
+        $this->db->delete('album', array('id' => $id));
+        unlink("./assets/img/albums/" . $gambar);
+        redirect('albums');
     }
 }

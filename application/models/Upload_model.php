@@ -3,11 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Upload_model extends CI_Model
 {
-    public function uploadIMG()
+    public function uploadFotoGuru()
     {
         $config['upload_path']          = './assets/img/foto_guru/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = 4000;
+        $config['max_size']             = 1024;
 
         $this->load->library('upload', $config);
     }
@@ -17,7 +17,7 @@ class Upload_model extends CI_Model
 
         $config['upload_path']          = './assets/berkas/';
         $config['allowed_types']        = 'pdf|jpg|png|xls|docx|doc';
-        $config['max_size']             = 6000;
+        $config['max_size']             = 5120;
 
         $this->load->library('upload', $config);
     }
@@ -26,7 +26,7 @@ class Upload_model extends CI_Model
     {
         $config['upload_path']          = './assets/img/logo_sekolah/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['max_size']             = 3000;
+        $config['max_size']             = 1024;
 
         $this->load->library('upload', $config);
     }
@@ -36,7 +36,7 @@ class Upload_model extends CI_Model
 
         $config['upload_path']          = './assets/sertifikat/';
         $config['allowed_types']        = 'pdf|jpg|png|docx|doc';
-        $config['max_size']             = 6000;
+        $config['max_size']             = 5120;
 
         $this->load->library('upload', $config);
     }
@@ -46,7 +46,7 @@ class Upload_model extends CI_Model
 
         $config['upload_path']          = './assets/img/albums/';
         $config['allowed_types']        = 'jpg|png';
-        $config['max_size']             = 3000;
+        $config['max_size']             = 512;
 
         $this->load->library('upload', $config);
     }

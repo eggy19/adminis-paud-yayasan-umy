@@ -6,6 +6,7 @@
                 <a href="<?php echo base_url('assets/img/albums/') . $album->gambar ?>" data-toggle="lightbox" target="_blank">
                     <img src="<?php echo base_url('assets/img/albums/') . $album->gambar ?>" class="img-fluid mb-2" alt="<?= $album->judul ?>" />
                 </a>
+                <a href="<?= base_url('albums/hapus/') . $album->id . '/' . $album->gambar ?>" class="btn btn-danger btn-sm">Hapus</a>
             </div>
         <?php } ?>
 

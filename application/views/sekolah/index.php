@@ -249,16 +249,55 @@
         //=========================================================
 
         var barChart = $('#barChart').get(0).getContext('2d');
-        var isiData = {
-            label: 'Density of Planets (kg/m3)',
-            data: [5427, 5243, 5514, 3933, 1326, 687, 1271, 1638]
-        }
+        const data = {
+            labels: [
+                <?php
+                foreach ($kelas as $i) {
+                    echo "'" . $i->kelas . "',";
+                }
+
+                ?>
+            ],
+            datasets: [{
+                label: 'Siswa',
+                data: [<?php
+                        foreach ($kelas as $i) {
+                            echo "'" . $i->jml_siswa . "',";
+                        }
+
+                        ?>],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
         new Chart(barChart, {
             type: 'bar',
-            data: {
-                labels: ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"],
-                datasets: [isiData]
-            }
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            },
         })
     });
 </script>

@@ -46,7 +46,7 @@
                                             <th>No Handphone</th>
                                             <th>TMT</th>
                                             <th>NBM</th>
-                                            <th>Foto</th>
+                                            <th></th>
 
                                         </tr>
                                     </thead>
@@ -62,7 +62,7 @@
                                                 <td><?= $i->no_hp ?></td>
                                                 <td><?= $i->tmt ?></td>
                                                 <td><?= $i->nbm ?></td>
-                                                <td><?= $i->foto ?></td>
+                                                <td></td>
 
                                             </tr>
                                         <?php  } ?>

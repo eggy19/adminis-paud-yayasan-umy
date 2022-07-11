@@ -113,4 +113,15 @@ class Kelas extends CI_Controller
         $data['judul_halaman'] = 'Data Kelas';
         $this->load->view('kelas/laporan', $data);
     }
+
+    public function detail($id_kelas)
+    {
+        $query = "SELECT siswa.nomor_induk, siswa.nama, kelas.kelas FROM kelas JOIN siswa ON siswa.id_kelas = kelas.id WHERE kelas.id='" . $id_kelas . "'";
+
+        $data['kelas'] = $this->db->query($query)->result();
+        $data['judul_halaman'] = 'Detail Kelas';
+
+        $this->load->view('kelas/detail', $data);
+        // var_dump($data);
+    }
 }

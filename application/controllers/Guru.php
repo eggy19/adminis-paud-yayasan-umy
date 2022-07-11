@@ -51,7 +51,7 @@ class Guru extends CI_Controller
         } else {
             //alur dan validasi untuk upload
             $this->load->model('upload_model');
-            $this->upload_model->uploadIMG();
+            $this->upload_model->uploadFotoGuru();
             if ($this->upload->do_upload('foto')) { //jika foto ada
 
                 $data = [ //persiapan simpan ke db
@@ -104,7 +104,7 @@ class Guru extends CI_Controller
                 unlink('./assets/img/foto_guru/' . $input_foto); //hapus foto sebelumnya
                 //alur dan validasi untuk upload
                 $this->load->model('upload_model');
-                $this->upload_model->uploadIMG();
+                $this->upload_model->uploadFotoGuru();
                 if ($this->upload->do_upload('foto')) { //jika foto ada
                     $foto = $this->upload->data('file_name');
                 } else {

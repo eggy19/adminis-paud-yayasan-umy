@@ -31,6 +31,7 @@
                 <?= $this->session->flashdata('msg'); ?>
                 <div class="row">
                     <div class="col-12">
+                        <a href="<?= base_url('kelas/laporan') ?>">Kembali</a>
                         <div class="card card-success">
                             <div class="card-header">
                                 <h3 class="card-title">Table Data Kelas</h3>
@@ -42,10 +43,9 @@
 
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Kelas</th>
-                                            <th>Wali Kelas 1</th>
-                                            <th>Wali Kelas 2</th>
-                                            <th></th>
+                                            <th>Nomor Induk</th>
+                                            <th>Nama Siswa</th>
+                                            <th>Kelas</th>
 
 
                                         </tr>
@@ -55,12 +55,9 @@
                                         foreach ($kelas as $i) { ?>
                                             <tr>
                                                 <td><?= $a++ ?></td>
+                                                <td><?= $i->nomor_induk ?></td>
+                                                <td><?= $i->nama ?></td>
                                                 <td><?= $i->kelas ?></td>
-                                                <td><?= $i->wali_kelas1 ?></td>
-                                                <td><?= $i->wali_kelas2 ?></td>
-                                                <td>
-                                                    <a href="<?= base_url('kelas/detail/') . $i->id ?>" class="btn btn-primary btn-sm">Detail</a>
-                                                </td>
                                             </tr>
                                         <?php } ?>
                                         </tfoot>

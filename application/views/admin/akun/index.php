@@ -104,6 +104,7 @@
                                                 <td><?= $i->role ?></td>
                                                 <td><?= date('d F Y', $i->created_at) ?></td>
                                                 <td class="project-actions text-center">
+                                                    <a href="<?= base_url('auth/lupaPassword/') . $i->id ?>" class="btn btn-info btn-sm">Lupa Password</a>
                                                     <button class="hapus btn btn-danger btn-sm" data="<?= $i->id ?>"><i class="fas fa-trash"> Hapus</i></button>
                                                 </td>
                                             </tr>

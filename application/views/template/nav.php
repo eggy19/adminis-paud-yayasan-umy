@@ -15,6 +15,9 @@
                 Hi, <?= $this->session->userdata('nama'); ?><i class="ml-2 fas fa-user"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <a href="<?= base_url('auth/ubahPassword') ?>" class="dropdown-item">
+                    <i class="fas fa-key mr-2"></i> Ubah Password
+                </a>
                 <a href="<?= base_url('auth/logout') ?>" class="dropdown-item">
                     <i class="fas fa-file mr-2"></i> Keluar
                 </a>

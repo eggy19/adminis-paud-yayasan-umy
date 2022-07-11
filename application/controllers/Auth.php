@@ -62,16 +62,6 @@ class Auth extends CI_Controller
         }
     }
 
-    // cek kondisi udah login belum
-    // public function cek_login()
-    // {
-    //     //cek session username
-    //     if ($this->CI->session->userdata('username') == "") {
-    //         $this->CI->session->flashdata('warning', 'Anda Belum Login');
-    //         redirect(base_url('auth'));
-    //     }
-    // }
-
     public function blocked()
     {
         //ambil data id user
@@ -92,5 +82,85 @@ class Auth extends CI_Controller
 
         $this->session->set_flashdata('messege', '<div class="alert alert-success" role=="alert">Berhasil Logged Out!</div>');
         redirect('auth');
+    }
+
+    public function ubahPassword()
+    {
+        is_logged_in();
+
+        $this->form_validation->set_rules('pass_lama', 'Password Lama', 'required|trim|min_length[6]');
+        $this->form_validation->set_rules('pass_baru', 'Password Baru', 'required|trim|min_length[6]');
+        $this->form_validation->set_rules('pass_baru2', 'Ulang Password', 'required|trim|min_length[6]|matches[pass_baru]', [
+            'matches' => 'password tidak sama',
+            'min_length' => 'password kependekan!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data['judul_halaman'] = "Ubah Password";
+            $this->load->view('login/ubahPass', $data);
+        } else {
+            $email = $this->input->post('email');
+            $pass_lama = $this->input->post('pass_lama');
+            $pass_baru = $this->input->post('pass_baru');
+            $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+            // cek password
+            if (password_verify($pass_lama, $user['password'])) {
+                // mengisi session
+                $data = [
+                    'nama' => htmlspecialchars($user['nama'], true),
+                    'email' => htmlspecialchars($user['email'], true),
+                    'password' => password_hash($pass_baru, PASSWORD_DEFAULT),
+                    'role_id' =>  htmlspecialchars($user['role_id'], true),
+                    'created_at' => $user['created_at']
+                ];
+
+                $where = ['id' => $user['id']];
+                $this->db->where($where);
+                $this->db->update('user', $data);
+
+                $this->session->set_flashdata('msg', '<div class="alert alert-success" role=="alert">Berhasil Ubah Password!</div>');
+                redirect('auth/ubahPassword');
+            } else {
+                $this->session->set_flashdata('msg', '<div class="alert alert-danger" role=="alert">Password Lama Salah!</div>');
+                redirect('auth/ubahPassword');
+            }
+        }
+    }
+
+    public function lupaPassword($id)
+    {
+        is_logged_in();
+        role_id_1();
+
+        $this->form_validation->set_rules('pass_baru', 'Password Baru', 'required|trim|min_length[6]');
+        $this->form_validation->set_rules('pass_baru2', 'Ulang Password', 'required|trim|min_length[6]|matches[pass_baru]', [
+            'matches' => 'password tidak sama',
+            'min_length' => 'password kependekan!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            $data['judul_halaman'] = "Lupa Password";
+            $data['id'] = $id;
+            $this->load->view('login/lupapass', $data);
+        } else {
+            $user = $this->db->get_where('user', ['id' => $id])->row_array();
+            $pass_baru = $this->input->post('pass_baru');
+
+            $data = [
+                'nama' => htmlspecialchars($user['nama'], true),
+                'email' => htmlspecialchars($user['email'], true),
+                'password' => password_hash($pass_baru, PASSWORD_DEFAULT),
+                'role_id' =>  htmlspecialchars($user['role_id'], true),
+                'created_at' => $user['created_at']
+            ];
+            // var_dump($data);
+            $where = ['id' => $id];
+            $this->db->where($where);
+            $this->db->update('user', $data);
+
+            $this->session->set_flashdata('msg', '<div class="alert alert-success" role=="alert">Berhasil Ubah Password!</div>');
+            redirect('auth/ubahPassword');
+        }
     }
 }

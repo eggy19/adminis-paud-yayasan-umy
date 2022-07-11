@@ -28,41 +28,44 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <?= $this->session->flashdata('msg'); ?>
                 <div class="row">
                     <div class="col-12">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Table Data Kelas</h3>
+                                <h3 class="card-title">Tabel Data Guru</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
-
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Kelas</th>
-                                            <th>Wali Kelas 1</th>
-                                            <th>Wali Kelas 2</th>
+                                            <th>Nama Guru</th>
+                                            <th>TTL</th>
+                                            <th>Alamat</th>
+                                            <th>No Handphone</th>
+                                            <th>TMT</th>
+                                            <th>NBM</th>
                                             <th></th>
-
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $a = 1;
-                                        foreach ($kelas as $i) { ?>
+                                        <?php
+                                        $a = 1;
+                                        foreach ($guru as $i) { ?>
                                             <tr>
                                                 <td><?= $a++ ?></td>
-                                                <td><?= $i->kelas ?></td>
-                                                <td><?= $i->wali_kelas1 ?></td>
-                                                <td><?= $i->wali_kelas2 ?></td>
-                                                <td>
-                                                    <a href="<?= base_url('kelas/detail/') . $i->id ?>" class="btn btn-primary btn-sm">Detail</a>
-                                                </td>
+                                                <td><?= $i->nama ?></td>
+                                                <td><?= $i->t_lahir .  ' ' . $i->tgl_lahir ?></td>
+                                                <td><?= $i->alamat ?></td>
+                                                <td><?= $i->no_hp ?></td>
+                                                <td><?= $i->tmt ?></td>
+                                                <td><?= $i->nbm ?></td>
+                                                <td><a href="<?= base_url('laporan/guru_detail/') . $i->id ?>" class="btn btn-info">Detail</a></td>
+
                                             </tr>
-                                        <?php } ?>
+                                        <?php  } ?>
                                         </tfoot>
                                 </table>
                             </div>
@@ -73,37 +76,12 @@
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
+
             </div>
             <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
     </div>
-
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title" id="judul"></h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <div id="tampil_modal">
-                        <!-- Data akan di tampilkan disini-->
-                    </div>
-                </div>
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-
 
     <!-- Footer -->
     <?php $this->load->view('template/footer'); ?>
@@ -125,7 +103,6 @@
 <script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="<?php echo base_url('assets/templates/plugins') ?>/datatables-buttons/js/buttons.colVis.min.js"></script>
-
 <script>
     $(document).ready(function() {
         $("#example1").DataTable({
@@ -134,6 +111,7 @@
             "autoWidth": false,
             "buttons": ["copy", "csv", "excel", "pdf", "print"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
     });
 </script>
 
