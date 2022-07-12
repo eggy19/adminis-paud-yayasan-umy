@@ -46,7 +46,6 @@ class profil extends CI_Controller
 
         $cek_foto = $_FILES['logo']['name'];
         $input_foto = $this->input->post('exist_logo'); //dari input exist_foto
-        var_dump($cek_foto);
 
         //cek ada foto atau tidak
         if ($cek_foto != null) {
@@ -101,8 +100,7 @@ class profil extends CI_Controller
         ];
         $this->db->where($id);
         $this->db->update('profil_sekolah',  $data);
-        $this->session->set_flashdata('msg', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>' . $data['kelas'] . '</strong> Berhasil Ubah Profil Sekolah!.
+        $this->session->set_flashdata('msg', '<div class="alert alert-success alert-dismissible fade show" role="alert"> Berhasil Ubah Profil Sekolah!.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>

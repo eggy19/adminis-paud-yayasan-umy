@@ -65,8 +65,9 @@
                 </form>
 
                 <p class="mb-1 mt-4">
-                    <a href="forgot-password.html">Saya lupa password</a>
+                    <a href="#" id="forgot">Saya lupa password</a>
                 </p>
+
             </div>
             <!-- /.login-card-body -->
         </div>
@@ -79,6 +80,13 @@
     <script src="<?= base_url('assets/templates') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url('assets/templates') ?>/dist/js/adminlte.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#forgot').click(function() {
+                alert('Lupa Password?\nSilahkan Hubungi Admin');
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -45,7 +45,18 @@ class Laporan extends CI_Controller
     {
         $data['kelas'] = $this->db->get_where('kelas', ['user_id' => $id_sekolah])->result();
         $data['judul_halaman'] = 'Data Kelas';
-        $this->load->view('kelas/laporan', $data);
+        $this->load->view('sekolah/kelas_laporan', $data);
+    }
+
+    public function kelas_detail($id_kelas)
+    {
+        $query = "SELECT siswa.nomor_induk, siswa.nama, kelas.kelas FROM kelas JOIN siswa ON siswa.id_kelas = kelas.id WHERE kelas.id='" . $id_kelas . "'";
+
+        $data['kelas'] = $this->db->query($query)->result();
+        $data['judul_halaman'] = 'Detail Kelas';
+
+        $this->load->view('sekolah/kelas_detail', $data);
+        // var_dump($data);
     }
 
     public function siswa()
